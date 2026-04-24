@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { TIERS, getTierForCount } from '@/lib/tiers'
 import { getLeaderboard, formatBytes, truncateId } from '@/lib/supabase'
+import { TierIcon } from '@/components/TierIcon'
 
 export const metadata: Metadata = {
   title: 'Tiers & Leaderboard — Deletable',
@@ -30,7 +31,7 @@ export default async function TiersPage() {
             key={tier.id}
             className="bg-card border border-border rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#3C3C3C] transition-colors"
           >
-            <div className="text-5xl mb-3">{tier.emoji}</div>
+            <div className="text-5xl mb-3"><TierIcon tier={tier} /></div>
             <div className="font-bold text-white mb-1">{tier.name}</div>
             <div
               className="text-xs font-semibold px-2.5 py-1 rounded-full mb-2"
@@ -52,13 +53,13 @@ export default async function TiersPage() {
         <div className="relative">
           <div className="absolute left-6 top-0 bottom-0 w-px bg-border" />
           <div className="space-y-4 pl-14">
-            {TIERS.map((tier) => (
+            {[...TIERS].reverse().map((tier) => (
               <div key={tier.id} className="relative flex items-center gap-4">
                 <div
                   className="absolute -left-8 w-5 h-5 rounded-full flex items-center justify-center text-xs"
                   style={{ backgroundColor: tier.color }}
                 >
-                  <span className="text-[10px]">{tier.emoji}</span>
+                  <TierIcon tier={tier} className="text-[10px]" />
                 </div>
                 <div className="flex items-center gap-3 flex-1">
                   <span className="font-semibold text-white text-sm">{tier.name}</span>
@@ -93,43 +94,55 @@ export default async function TiersPage() {
           </div>
         ) : (
           <div className="bg-card border border-border rounded-3xl overflow-hidden">
-            <div className="grid grid-cols-[2rem_1fr_auto_auto_auto] gap-4 px-6 py-3 border-b border-border text-text-tertiary text-xs font-semibold uppercase tracking-wider">
-              <span>#</span>
+            <div className="grid grid-cols-[3.5rem_1fr_auto_auto_auto] gap-4 px-6 py-3 border-b border-border text-text-tertiary text-xs font-semibold uppercase tracking-wider">
+              <span>Rank</span>
               <span>Device</span>
-              <span className="text-right">Tier</span>
+              <span>Tier</span>
               <span className="text-right">Deleted</span>
               <span className="text-right">Freed</span>
             </div>
             {leaderboard.map((row, i) => {
               const tier = getTierForCount(row.total_items_deleted)
+              const medals = ['🥇', '🥈', '🥉']
               return (
                 <div
                   key={row.device_id}
-                  className={`grid grid-cols-[2rem_1fr_auto_auto_auto] gap-4 px-6 py-4 items-center ${
+                  className={`grid grid-cols-[3.5rem_1fr_auto_auto_auto] gap-4 pl-4 pr-6 py-4 items-center ${
                     i < leaderboard.length - 1 ? 'border-b border-border' : ''
-                  } hover:bg-[#242424] transition-colors`}
+                  } hover:bg-[#1e1e1e] transition-colors`}
+                  style={i < 3 ? { borderLeft: `3px solid ${medalColors[i]}` } : { borderLeft: '3px solid transparent' }}
                 >
-                  <span
-                    className="text-sm font-bold"
-                    style={{ color: i < 3 ? medalColors[i] : '#505050' }}
-                  >
-                    {i + 1}
-                  </span>
+                  <div className="flex flex-col items-center gap-0.5">
+                    {i < 3 ? (
+                      <span className="text-xl leading-none">{medals[i]}</span>
+                    ) : (
+                      <span className="text-sm font-bold" style={{ color: '#505050' }}>{i + 1}</span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-2 min-w-0">
-                    <span className="font-mono text-xs text-text-secondary truncate">
+                    <span className="font-mono text-sm text-white truncate">
                       {truncateId(row.device_id)}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1.5 justify-end">
-                    <span className="text-base">{tier.emoji}</span>
-                    <span className="text-xs text-text-secondary hidden sm:inline">{tier.name}</span>
+                  <div
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold shrink-0"
+                    style={{ backgroundColor: `${tier.color}22`, color: tier.color }}
+                  >
+                    <TierIcon tier={tier} />
+                    <span className="hidden sm:inline">{tier.name}</span>
                   </div>
-                  <span className="text-sm font-semibold text-right text-white">
-                    {row.total_items_deleted.toLocaleString()}
-                  </span>
-                  <span className="text-xs text-text-secondary text-right">
-                    {formatBytes(row.total_bytes_freed)}
-                  </span>
+                  <div className="text-right">
+                    <span className="text-base font-bold text-white">
+                      {row.total_items_deleted.toLocaleString()}
+                    </span>
+                    <div className="text-xs text-text-tertiary">items</div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm text-text-secondary">
+                      {formatBytes(row.total_bytes_freed)}
+                    </span>
+                    <div className="text-xs text-text-tertiary">freed</div>
+                  </div>
                 </div>
               )
             })}

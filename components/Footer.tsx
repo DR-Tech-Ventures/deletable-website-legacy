@@ -11,11 +11,13 @@ export default function Footer() {
         </div>
         <nav className="flex items-center gap-6 text-sm text-text-secondary">
           <Link href="/features" className="hover:text-white transition-colors">Features</Link>
-          <Link href="/tiers" className="hover:text-white transition-colors">Tiers</Link>
+          <Link href="/guide" className="hover:text-white transition-colors">Guide</Link>
+          <Link href="/tiers" className="hover:text-white transition-colors">Trash Tiers</Link>
           <Link href="/help" className="hover:text-white transition-colors">Help</Link>
+          <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
           <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
         </nav>
-        <p className="text-text-tertiary text-sm">© {new Date().getFullYear()} DRTech Ventures</p>
+        <p className="text-text-tertiary text-sm">© {new Date().getFullYear()} DR Tech Ventures LLC</p>
       </div>
     </footer>
   )
