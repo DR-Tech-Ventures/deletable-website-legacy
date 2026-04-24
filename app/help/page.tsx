@@ -104,7 +104,7 @@ const faqs = [
       },
       {
         q: 'I found a bug or want to request a feature.',
-        a: 'Please open an issue on our GitHub repository or contact us via the App Store listing. We read every report.',
+        a: 'Use the feedback form on our Help page or contact us via the App Store listing. We read every report.',
       },
     ],
   },
@@ -167,15 +167,13 @@ export default function HelpPage() {
         <div className="text-4xl mb-3">💬</div>
         <h2 className="text-xl font-bold mb-2">Still need help?</h2>
         <p className="text-text-secondary text-sm mb-4">
-          Open an issue on GitHub and we'll get back to you.
+          Reach out via the App Store listing and we'll get back to you.
         </p>
         <a
-          href="https://github.com/drtechventures/deletable/issues"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://apps.apple.com"
           className="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
         >
-          Open an issue on GitHub
+          Contact us on the App Store
         </a>
         <div className="mt-4">
           <Link href="/privacy" className="text-text-secondary hover:text-white text-sm transition-colors">

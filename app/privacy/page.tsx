@@ -95,7 +95,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="9. Contact">
-          <P>Questions about this privacy policy? Open an issue on <a href="https://github.com/drtechventures/deletable/issues" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-hover transition-colors">GitHub</a> or reach out via the App Store listing.</P>
+          <P>Questions about this privacy policy? Reach out via the App Store listing or the <a href="/help" className="text-accent hover:text-accent-hover transition-colors">Help page</a>.</P>
         </Section>
 
       </div>
