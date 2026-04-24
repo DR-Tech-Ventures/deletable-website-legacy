@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         </section>
 
         <Section title="1. Who we are">
-          <P>Deletable is developed and published by DRTech Ventures. References to "we," "us," or "our" in this policy refer to DRTech Ventures.</P>
+          <P>Deletable is developed and published by DR Tech Ventures LLC. References to "we," "us," or "our" in this policy refer to DR Tech Ventures LLC.</P>
         </Section>
 
         <Section title="2. What data stays on your device">
