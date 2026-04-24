@@ -36,7 +36,7 @@ const sections = [
       },
       {
         title: 'Use a template',
-        body: 'When creating a new note, tap the template icon to start from a blank page, Title + Bullets, Title + Sub-bullets, or a Numbered List layout — so you're never staring at an empty screen.',
+        body: "When creating a new note, tap the template icon to start from a blank page, Title + Bullets, Title + Sub-bullets, or a Numbered List layout — so you're never staring at an empty screen.",
       },
       {
         title: 'Adjust the font',
@@ -120,7 +120,7 @@ const sections = [
     steps: [
       {
         title: 'AES-256 encryption',
-        body: 'Encryption is always on — there's no toggle to disable it. Every note and photo is encrypted before being written to the local SQLite database. Your master key is stored in the iOS Keychain and never leaves your device.',
+        body: "Encryption is always on — there's no toggle to disable it. Every note and photo is encrypted before being written to the local SQLite database. Your master key is stored in the iOS Keychain and never leaves your device.",
       },
       {
         title: 'Enable Face ID / Touch ID',
@@ -147,7 +147,7 @@ const sections = [
       },
       {
         title: 'Deletion confirmation',
-        body: 'When an item is automatically deleted, Deletable can send a confirmation notification containing the item's title. Toggle this in Settings → Notifications.',
+        body: "When an item is automatically deleted, Deletable can send a confirmation notification containing the item's title. Toggle this in Settings → Notifications.",
       },
       {
         title: 'Location-based reminders',
