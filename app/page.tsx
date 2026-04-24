@@ -2,42 +2,87 @@ import Link from 'next/link'
 import { VaultMockup, StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
 
-const features = [
+const trustPillars = [
+  {
+    icon: '📵',
+    title: 'No cloud. Ever.',
+    desc: 'Your notes and photos never leave your device. There is no server, no sync, no backup. What you store stays on your iPhone — period.',
+  },
+  {
+    icon: '🔐',
+    title: 'Encrypted at rest',
+    desc: 'Every item is encrypted with AES-256 before it touches storage. No other app, no OS file browser, and no one else can read your data.',
+  },
   {
     icon: '⏱️',
-    title: 'Auto-Deleting Vault',
-    desc: 'Set a timer on every note and photo. When time runs out, it\'s gone — permanently.',
-    color: '#FF3B2F',
+    title: 'Deletes itself',
+    desc: 'Set a timer once and forget it. Deletable handles the cleanup automatically — even while the app is closed.',
   },
+]
+
+const useCases = [
+  {
+    emoji: '🚗',
+    title: 'Where did I park?',
+    desc: 'Snap a photo of the parking level or drop a note with your spot number. It auto-deletes when you no longer need it.',
+  },
+  {
+    emoji: '👋',
+    title: 'That name you just heard',
+    desc: 'Met someone and don\'t want to forget their name? Save it with a 24-hour timer. Gone by tomorrow, without you lifting a finger.',
+  },
+  {
+    emoji: '🛒',
+    title: 'A grocery list that cleans itself up',
+    desc: 'Write your list, set it to delete tonight. No more stale lists cluttering your notes app.',
+  },
+  {
+    emoji: '📸',
+    title: 'Photos you\'d rather not keep',
+    desc: 'A whiteboard, a receipt, a document you needed once. Capture it, set an expiry, and it\'s gone. No manual cleanup required.',
+  },
+  {
+    emoji: '🔑',
+    title: 'Temporary credentials',
+    desc: 'A Wi-Fi password, a one-time PIN, a locker combo. Store it long enough to use it, then let it vanish.',
+  },
+  {
+    emoji: '📋',
+    title: 'Notes from a meeting',
+    desc: 'Jot down action items or sensitive details. Set them to expire after a week — nothing lingers in plain sight.',
+  },
+]
+
+const features = [
   {
     icon: '🔒',
     title: 'AES-256 Encryption',
-    desc: 'Every item is encrypted at rest. Your master key never leaves your device\'s Keychain.',
-    color: '#30D158',
+    desc: 'Always on — no toggle. Every note and photo is encrypted before storage. The key lives in your iOS Keychain only.',
   },
   {
     icon: '👤',
     title: 'Face ID Lock',
     desc: 'Biometric authentication keeps prying eyes out. Configurable lock timeout from instant to never.',
-    color: '#0A84FF',
   },
   {
     icon: '📍',
     title: 'Location Reminders',
     desc: 'Geofence notes to a place. Get reminded when you arrive or leave — then watch them vanish.',
-    color: '#FF9F0A',
   },
   {
     icon: '🏝️',
     title: 'Dynamic Island',
-    desc: 'See a live countdown to your next deletion right in the Dynamic Island on iPhone 14 Pro+.',
-    color: '#BF5AF2',
+    desc: 'Live countdown to your next deletion in the Dynamic Island on iPhone 14 Pro+.',
+  },
+  {
+    icon: '🗂️',
+    title: 'Categories',
+    desc: 'Organize with custom categories, colors, and icons — each with its own default deletion time.',
   },
   {
     icon: '📊',
     title: 'Stats & Achievements',
-    desc: '8 tiers of trash glory. Track bytes freed, items deleted, and compete on the global leaderboard.',
-    color: '#FF9F0A',
+    desc: '8 tiers of trash glory. Track bytes freed, items deleted, and rank on the global leaderboard.',
   },
 ]
 
@@ -62,7 +107,8 @@ export default function Home() {
               </h1>
               <p className="text-text-secondary text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
                 A privacy-first iOS vault for notes and photos that delete themselves.
-                Set a timer, lock it with Face ID, and let Deletable do the rest.
+                Stored only on your device. Encrypted so nothing else can read it.
+                Gone when you say so.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <a
@@ -94,12 +140,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features grid */}
-      <section className="py-20 px-6">
+      {/* Trust pillars */}
+      <section className="py-16 px-6 border-y border-border">
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-3 gap-6">
+          {trustPillars.map((p) => (
+            <div key={p.title} className="flex gap-4">
+              <span className="text-3xl shrink-0">{p.icon}</span>
+              <div>
+                <h3 className="font-bold text-white mb-1">{p.title}</h3>
+                <p className="text-text-secondary text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Use cases */}
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-3">Built for privacy. Designed to disappear.</h2>
-            <p className="text-text-secondary text-lg max-w-xl mx-auto">Everything you store has an expiry date. No exceptions.</p>
+            <h2 className="text-4xl font-bold mb-3">Built for everyday moments</h2>
+            <p className="text-text-secondary text-lg max-w-xl mx-auto">
+              The things you need to remember for an hour, a day, or a week — then want completely gone.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {useCases.map((u) => (
+              <div key={u.title} className="bg-card border border-border rounded-2xl p-6 hover:border-[#3C3C3C] transition-colors">
+                <div className="text-3xl mb-3">{u.emoji}</div>
+                <h3 className="font-semibold text-white mb-1.5">{u.title}</h3>
+                <p className="text-text-secondary text-sm leading-relaxed">{u.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Privacy callout */}
+      <section className="py-16 px-6 bg-card/30">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-card border border-border rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+            <div className="text-6xl shrink-0">🔐</div>
+            <div>
+              <h2 className="text-2xl font-bold mb-3">Nothing leaves your phone</h2>
+              <p className="text-text-secondary leading-relaxed mb-4">
+                Deletable has no cloud, no account, and no server that stores your content.
+                Everything is encrypted with AES-256 and locked inside your device.
+                Other apps can't access it. iOS can't read it. We can't see it.
+                The only person who can open your vault is you — with your face.
+              </p>
+              <Link href="/features" className="text-accent hover:text-accent-hover font-medium text-sm transition-colors">
+                See how the encryption works →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features grid */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold mb-3">Everything else it does</h2>
+            <p className="text-text-secondary text-lg max-w-xl mx-auto">Privacy is the foundation. These are the features built on top of it.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f) => (
@@ -158,7 +261,7 @@ export default function Home() {
             <span className="text-gradient">what you don't need.</span>
           </h2>
           <p className="text-text-secondary text-lg mb-8">
-            Free download. No account required. Your data never leaves your device.
+            Free download. No account. No cloud. Nothing stored anywhere but your pocket.
           </p>
           <a
             href="https://apps.apple.com"
