@@ -44,15 +44,29 @@ export default function PrivacyPage() {
 
         <Section title="3. What anonymous data we collect">
           <P>When the app is initialized and when vault activity occurs, Deletable syncs the following statistics to our Supabase backend. This data is linked to a <strong className="text-white">randomly generated UUID</strong> created at first launch — it has no connection to your Apple ID, name, email, or device serial number.</P>
-          <div className="bg-background rounded-xl p-4 mt-3 text-sm font-mono space-y-1 text-text-secondary">
-            <div>total_items_deleted</div>
-            <div>total_notes_deleted</div>
-            <div>total_photos_deleted</div>
-            <div>total_bytes_freed</div>
-            <div>current_tier</div>
-            <div>current_notes / current_photos / current_total_items</div>
-            <div>deletion_time_distribution</div>
-            <div>platform / app_version / last_updated_at</div>
+          <div className="bg-background rounded-xl p-4 mt-3 text-sm font-mono space-y-3 text-text-secondary">
+            <div className="space-y-1">
+              <div className="text-xs uppercase tracking-wider text-text-secondary opacity-50 font-sans mb-1">Device</div>
+              <div>platform / device_model / os_version / app_version</div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs uppercase tracking-wider text-text-secondary opacity-50 font-sans mb-1">Deletion stats</div>
+              <div>total_items_deleted / total_notes_deleted / total_photos_deleted</div>
+              <div>total_bytes_freed</div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs uppercase tracking-wider text-text-secondary opacity-50 font-sans mb-1">Creation stats</div>
+              <div>total_notes_created</div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs uppercase tracking-wider text-text-secondary opacity-50 font-sans mb-1">Current vault state</div>
+              <div>current_notes / current_photos / current_total_items</div>
+              <div>deletion_time_distribution</div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs uppercase tracking-wider text-text-secondary opacity-50 font-sans mb-1">Metadata</div>
+              <div>current_tier / last_updated_at</div>
+            </div>
           </div>
           <P className="mt-3">We use this data solely to understand aggregate app usage, power the in-app statistics features, and display the anonymous global leaderboard on this website.</P>
         </Section>
