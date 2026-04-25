@@ -1,9 +1,21 @@
 import type { Metadata } from 'next'
+import { CameraIcon, PhotoIcon, MapPinIcon, UserIcon, BellIcon, RefreshIcon, LockIcon } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Deletable',
   description: 'How Deletable handles your data — and why almost none of it ever leaves your device.',
 }
+
+type IconComponent = React.ComponentType<{ className?: string }>
+
+const permissions: { Icon: IconComponent; color: string; name: string; reason: string }[] = [
+  { Icon: CameraIcon, color: 'text-blue bg-blue/10', name: 'Camera', reason: 'To capture photos you choose to store in the vault.' },
+  { Icon: PhotoIcon, color: 'text-blue bg-blue/10', name: 'Photo Library', reason: 'To import photos from your library into the vault.' },
+  { Icon: MapPinIcon, color: 'text-purple bg-purple/10', name: 'Location (In-Use & Background)', reason: 'To attach geofence reminders to notes. Only used when you explicitly enable Location Context in Settings.' },
+  { Icon: UserIcon, color: 'text-accent bg-accent/10', name: 'Face ID / Biometrics', reason: 'To lock the app and require authentication on open.' },
+  { Icon: BellIcon, color: 'text-orange bg-orange/10', name: 'Notifications', reason: 'To send optional expiry reminder alerts before items are deleted.' },
+  { Icon: RefreshIcon, color: 'text-orange bg-orange/10', name: 'Background App Refresh', reason: 'To purge expired items even when the app is not open.' },
+]
 
 export default function PrivacyPage() {
   const lastUpdated = 'April 23, 2026'
@@ -19,7 +31,9 @@ export default function PrivacyPage() {
 
         <section className="bg-card border border-border rounded-2xl p-6">
           <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">🔒</span>
+            <div className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+              <LockIcon className="w-4.5 h-4.5 text-accent" />
+            </div>
             <h2 className="text-xl font-bold">The short version</h2>
           </div>
           <p className="text-text-secondary leading-relaxed">
@@ -28,7 +42,7 @@ export default function PrivacyPage() {
         </section>
 
         <Section title="1. Who we are">
-          <P>Deletable is developed and published by DR Tech Ventures LLC. References to "we," "us," or "our" in this policy refer to DR Tech Ventures LLC.</P>
+          <P>Deletable is developed and published by DR Tech Ventures LLC. References to &quot;we,&quot; &quot;us,&quot; or &quot;our&quot; in this policy refer to DR Tech Ventures LLC.</P>
         </Section>
 
         <Section title="2. What data stays on your device">
@@ -77,16 +91,11 @@ export default function PrivacyPage() {
 
         <Section title="5. Permissions we request">
           <div className="space-y-3 mt-2">
-            {[
-              { icon: '📷', name: 'Camera', reason: 'To capture photos you choose to store in the vault.' },
-              { icon: '🖼️', name: 'Photo Library', reason: 'To import photos from your library into the vault.' },
-              { icon: '📍', name: 'Location (In-Use & Background)', reason: 'To attach geofence reminders to notes. Only used when you explicitly enable Location Context in Settings.' },
-              { icon: '👤', name: 'Face ID / Biometrics', reason: 'To lock the app and require authentication on open.' },
-              { icon: '🔔', name: 'Notifications', reason: 'To send optional expiry reminder alerts before items are deleted.' },
-              { icon: '⚙️', name: 'Background App Refresh', reason: 'To purge expired items even when the app is not open.' },
-            ].map(({ icon, name, reason }) => (
-              <div key={name} className="flex gap-3">
-                <span className="text-xl shrink-0">{icon}</span>
+            {permissions.map(({ Icon, color, name, reason }) => (
+              <div key={name} className="flex gap-3 items-start">
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${color}`}>
+                  <Icon className="w-4 h-4" />
+                </div>
                 <div>
                   <div className="text-white text-sm font-medium">{name}</div>
                   <div className="text-text-secondary text-sm">{reason}</div>

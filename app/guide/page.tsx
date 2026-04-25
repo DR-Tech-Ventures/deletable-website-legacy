@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import {
+  FileTextIcon, CameraIcon, ClockIcon, FolderIcon,
+  LockIcon, BellIcon, SlidersIcon, TrophyIcon, ToolIcon,
+} from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'User Guide — Deletable',
   description: 'A complete guide to using Deletable — creating notes and photos, setting timers, organizing with categories, and more.',
 }
+
+type IconComponent = React.ComponentType<{ className?: string }>
 
 const steps = [
   {
@@ -20,14 +26,21 @@ const steps = [
   {
     number: '03',
     title: 'Extend or edit anytime',
-    body: 'Changed your mind? Open any item and tap the timer badge at the top of the card to choose a new expiry time. You can also edit note content at any time — your changes are re-encrypted on save.',
+    body: "Changed your mind? Open any item and tap the timer badge at the top of the card to choose a new expiry time. You can also edit note content at any time — your changes are re-encrypted on save.",
   },
 ]
 
-const sections = [
+const sections: {
+  id: string
+  Icon: IconComponent
+  color: string
+  heading: string
+  steps: { title: string; body: string }[]
+}[] = [
   {
     id: 'notes',
-    icon: '📝',
+    Icon: FileTextIcon,
+    color: 'text-blue bg-blue/10',
     heading: 'Writing Notes',
     steps: [
       {
@@ -50,7 +63,8 @@ const sections = [
   },
   {
     id: 'photos',
-    icon: '📸',
+    Icon: CameraIcon,
+    color: 'text-blue bg-blue/10',
     heading: 'Storing Photos',
     steps: [
       {
@@ -69,7 +83,8 @@ const sections = [
   },
   {
     id: 'timers',
-    icon: '⏱️',
+    Icon: ClockIcon,
+    color: 'text-orange bg-orange/10',
     heading: 'Deletion Timers',
     steps: [
       {
@@ -92,7 +107,8 @@ const sections = [
   },
   {
     id: 'categories',
-    icon: '🗂️',
+    Icon: FolderIcon,
+    color: 'text-blue bg-blue/10',
     heading: 'Categories',
     steps: [
       {
@@ -115,7 +131,8 @@ const sections = [
   },
   {
     id: 'security',
-    icon: '🔐',
+    Icon: LockIcon,
+    color: 'text-accent bg-accent/10',
     heading: 'Security & Lock Screen',
     steps: [
       {
@@ -138,7 +155,8 @@ const sections = [
   },
   {
     id: 'notifications',
-    icon: '🔔',
+    Icon: BellIcon,
+    color: 'text-orange bg-orange/10',
     heading: 'Notifications & Reminders',
     steps: [
       {
@@ -161,7 +179,8 @@ const sections = [
   },
   {
     id: 'vault',
-    icon: '⚙️',
+    Icon: SlidersIcon,
+    color: 'text-blue bg-blue/10',
     heading: 'Vault Layout & Search',
     steps: [
       {
@@ -180,7 +199,8 @@ const sections = [
   },
   {
     id: 'stats',
-    icon: '🏆',
+    Icon: TrophyIcon,
+    color: 'text-green bg-green/10',
     heading: 'Stats & Achievement Tiers',
     steps: [
       {
@@ -199,7 +219,8 @@ const sections = [
   },
   {
     id: 'settings',
-    icon: '🛠️',
+    Icon: ToolIcon,
+    color: 'text-text-secondary bg-card',
     heading: 'Settings Overview',
     steps: [
       {
@@ -240,9 +261,12 @@ export default function GuidePage() {
           <a
             key={s.id}
             href={`#${s.id}`}
-            className="bg-card border border-border hover:border-[#3C3C3C] text-text-secondary hover:text-white text-sm px-4 py-2 rounded-xl transition-colors"
+            className="flex items-center gap-2 bg-card border border-border hover:border-[#3C3C3C] text-text-secondary hover:text-white text-sm px-4 py-2 rounded-xl transition-colors"
           >
-            {s.icon} {s.heading}
+            <div className={`w-5 h-5 rounded-md flex items-center justify-center ${s.color}`}>
+              <s.Icon className="w-3 h-3" />
+            </div>
+            {s.heading}
           </a>
         ))}
       </div>
@@ -267,9 +291,12 @@ export default function GuidePage() {
       <div className="space-y-16">
         {sections.map((section) => (
           <div key={section.id} id={section.id}>
-            <h2 className="text-2xl font-bold mb-6 text-gradient inline-block">
-              {section.icon} {section.heading}
-            </h2>
+            <div className="flex items-center gap-3 mb-6">
+              <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${section.color}`}>
+                <section.Icon className="w-4.5 h-4.5" />
+              </div>
+              <h2 className="text-2xl font-bold text-gradient inline-block">{section.heading}</h2>
+            </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {section.steps.map((step) => (
                 <div key={step.title} className="bg-card border border-border rounded-2xl p-6">
