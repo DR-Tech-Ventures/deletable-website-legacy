@@ -1,36 +1,53 @@
 import type { Metadata } from 'next'
+import {
+  FileTextIcon, CameraIcon, FolderIcon, SearchIcon, SlidersIcon,
+  ClockIcon, CalendarIcon, RefreshIcon, BellIcon,
+  LockIcon, UserIcon, EyeOffIcon, BarChartIcon,
+  MapPinIcon, SmartphoneIcon, MoonIcon,
+  TrophyIcon, UploadIcon, GlobeIcon,
+} from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'Features — Deletable',
   description: 'Everything Deletable can do: encrypted vault, auto-delete, Face ID, location reminders, Dynamic Island, and more.',
 }
 
-const sections = [
+type IconComponent = React.ComponentType<{ className?: string }>
+
+const sections: {
+  heading: string
+  features: { Icon: IconComponent; color: string; title: string; desc: string }[]
+}[] = [
   {
     heading: 'The Vault',
     features: [
       {
-        icon: '📝',
+        Icon: FileTextIcon,
+        color: 'text-blue bg-blue/10',
         title: 'Encrypted Notes',
         desc: 'Write notes with rich text formatting — bold, italic, underline, strikethrough. Every character encrypted with AES-256 before hitting disk.',
       },
       {
-        icon: '📸',
+        Icon: CameraIcon,
+        color: 'text-blue bg-blue/10',
         title: 'Encrypted Photos',
         desc: 'Capture from camera or import from your library. Thumbnails and full images are encrypted; nothing is stored in plain text.',
       },
       {
-        icon: '🗂️',
+        Icon: FolderIcon,
+        color: 'text-blue bg-blue/10',
         title: 'Categories',
         desc: 'Organize items into custom categories with your own colors and icons. Set a default deletion time per category.',
       },
       {
-        icon: '🔍',
+        Icon: SearchIcon,
+        color: 'text-blue bg-blue/10',
         title: 'Search',
         desc: 'Full-text search across all your notes and photo titles. Hidden by default — reveal with a tap or a pull-down swipe.',
       },
       {
-        icon: '⚙️',
+        Icon: SlidersIcon,
+        color: 'text-blue bg-blue/10',
         title: 'Layout Options',
         desc: 'Switch between 1 or 2 columns per row. Sort by soonest-to-delete or most recently created.',
       },
@@ -40,24 +57,28 @@ const sections = [
     heading: 'Deletion',
     features: [
       {
-        icon: '⏱️',
+        Icon: ClockIcon,
+        color: 'text-orange bg-orange/10',
         title: '13 Preset Timers',
         desc: 'Choose from 60 minutes, 3 h, 6 h, 12 h, 24 h, 3 days, 5 days, 7 days, 14 days, 30 days, 6 months — or set a fully custom duration.',
       },
       {
-        icon: '📅',
+        Icon: CalendarIcon,
+        color: 'text-orange bg-orange/10',
         title: 'Pick an Exact Date',
         desc: 'Choose a specific date and time for precise expiry. Perfect for things that need to vanish after a meeting or event.',
       },
       {
-        icon: '🔁',
+        Icon: RefreshIcon,
+        color: 'text-orange bg-orange/10',
         title: 'Background Purge',
-        desc: 'Expired items are scrubbed automatically even when the app is closed, via iOS background fetch (checks every 15 min).',
+        desc: "Expired items are scrubbed automatically even when the app is closed, via iOS background fetch (checks every 15 min).",
       },
       {
-        icon: '🔔',
+        Icon: BellIcon,
+        color: 'text-orange bg-orange/10',
         title: 'Expiry Reminders',
-        desc: 'Optional push notifications 1 hour or 24 hours before an item is deleted, so you can act before it\'s gone.',
+        desc: "Optional push notifications 1 hour or 24 hours before an item is deleted, so you can act before it's gone.",
       },
     ],
   },
@@ -65,22 +86,26 @@ const sections = [
     heading: 'Security & Privacy',
     features: [
       {
-        icon: '🔐',
+        Icon: LockIcon,
+        color: 'text-accent bg-accent/10',
         title: 'AES-256 Encryption',
-        desc: 'Always on — there\'s no toggle. Every note and photo is encrypted before storage. The master key is sealed in the iOS Keychain.',
+        desc: "Always on — there's no toggle. Every note and photo is encrypted before storage. The master key is sealed in the iOS Keychain.",
       },
       {
-        icon: '👤',
+        Icon: UserIcon,
+        color: 'text-accent bg-accent/10',
         title: 'Face ID / Touch ID',
         desc: 'Require biometric authentication to open the app. Configure the lock timeout: immediate, 1 min, 5 min, 15 min, or never.',
       },
       {
-        icon: '🙈',
+        Icon: EyeOffIcon,
+        color: 'text-accent bg-accent/10',
         title: 'No Account Required',
         desc: 'Zero sign-up, zero cloud sync for your content. Everything stays on your device. We only collect anonymous, aggregated usage stats.',
       },
       {
-        icon: '📊',
+        Icon: BarChartIcon,
+        color: 'text-green bg-green/10',
         title: 'Anonymous Analytics',
         desc: 'We track deletion counts and vault sizes tied to a random UUID — never your name, email, or any identifying information.',
       },
@@ -90,17 +115,20 @@ const sections = [
     heading: 'iOS Integrations',
     features: [
       {
-        icon: '📍',
+        Icon: MapPinIcon,
+        color: 'text-purple bg-purple/10',
         title: 'Location Context',
         desc: 'Tag notes with a geofence. Get reminded when you arrive at or leave a location — then the note deletes on schedule.',
       },
       {
-        icon: '🏝️',
+        Icon: SmartphoneIcon,
+        color: 'text-purple bg-purple/10',
         title: 'Dynamic Island',
         desc: 'On iPhone 14 Pro and later, a Live Activity in the Dynamic Island shows a countdown to your next expiring item.',
       },
       {
-        icon: '🌗',
+        Icon: MoonIcon,
+        color: 'text-purple bg-purple/10',
         title: 'Dark / Light / System Theme',
         desc: 'Follows your system appearance, or lock it to dark or light mode in Settings.',
       },
@@ -110,17 +138,20 @@ const sections = [
     heading: 'Stats & Achievements',
     features: [
       {
-        icon: '🏆',
+        Icon: TrophyIcon,
+        color: 'text-green bg-green/10',
         title: '8 Achievement Tiers',
         desc: 'From Trash Panda (1 item) to Distinguished Raccoonian (1,000 items). Each tier unlocks a new title and emoji pile.',
       },
       {
-        icon: '📤',
+        Icon: UploadIcon,
+        color: 'text-green bg-green/10',
         title: 'Shareable Stats Card',
         desc: 'Generate a beautiful dark-themed PNG of your stats — tier badge, items deleted, bytes freed — and share it anywhere.',
       },
       {
-        icon: '🌍',
+        Icon: GlobeIcon,
+        color: 'text-green bg-green/10',
         title: 'Global Leaderboard',
         desc: 'Anonymous rankings of top deleters worldwide. See how your trash game stacks up.',
       },
@@ -145,7 +176,9 @@ export default function FeaturesPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               {section.features.map((f) => (
                 <div key={f.title} className="bg-card border border-border rounded-2xl p-6 flex gap-4">
-                  <span className="text-3xl shrink-0">{f.icon}</span>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${f.color}`}>
+                    <f.Icon className="w-5 h-5" />
+                  </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">{f.title}</h3>
                     <p className="text-text-secondary text-sm leading-relaxed">{f.desc}</p>
@@ -158,7 +191,7 @@ export default function FeaturesPage() {
       </div>
 
       <div className="mt-20 text-center bg-card border border-border rounded-3xl p-10">
-        <div className="text-5xl mb-4">📱</div>
+        <div className="text-5xl mb-4">🗑️</div>
         <h2 className="text-3xl font-bold mb-2">Ready to clean up?</h2>
         <p className="text-text-secondary mb-6">Free download. No account. No compromise.</p>
         <a

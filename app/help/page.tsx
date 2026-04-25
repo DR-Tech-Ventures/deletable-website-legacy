@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Help — Deletable',
@@ -104,7 +105,7 @@ const faqs = [
       },
       {
         q: 'I found a bug or want to request a feature.',
-        a: 'Use the feedback form on our Help page or contact us via the App Store listing. We read every report.',
+        a: 'Use the contact form at the bottom of this page. We read every report.',
       },
     ],
   },
@@ -163,19 +164,15 @@ export default function HelpPage() {
         ))}
       </div>
 
-      <div className="mt-16 bg-card border border-border rounded-3xl p-8 text-center">
-        <div className="text-4xl mb-3">💬</div>
-        <h2 className="text-xl font-bold mb-2">Still need help?</h2>
-        <p className="text-text-secondary text-sm mb-4">
-          Reach out via the App Store listing and we'll get back to you.
-        </p>
-        <a
-          href="https://apps.apple.com"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
-        >
-          Contact us on the App Store
-        </a>
-        <div className="mt-4">
+      <div className="mt-16 bg-card border border-border rounded-3xl p-8">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold mb-1">Still need help?</h2>
+          <p className="text-text-secondary text-sm">
+            Questions, feedback, or bug reports — send us a message and we'll get back to you.
+          </p>
+        </div>
+        <ContactForm />
+        <div className="mt-6 pt-6 border-t border-border text-center">
           <Link href="/privacy" className="text-text-secondary hover:text-white text-sm transition-colors">
             Read our Privacy Policy →
           </Link>
