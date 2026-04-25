@@ -1,6 +1,6 @@
 'use server'
 
-import { supabase } from '@/lib/supabase'
+import { getClient } from '@/lib/supabase'
 
 type ContactState = { success: true } | { success: false; error: string } | null
 
@@ -17,7 +17,10 @@ export async function submitContact(
     return { success: false, error: 'Name, email, and message are required.' }
   }
 
-  const { error } = await supabase.from('contact_submissions').insert({
+  const client = getClient()
+  if (!client) return { success: false, error: 'Service unavailable. Please try again later.' }
+
+  const { error } = await client.from('contact_submissions').insert({
     name,
     email,
     subject,
