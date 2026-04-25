@@ -18,7 +18,7 @@ export default function Nav() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">🗑️</span>
+          <img src="/raccoon.png" alt="" className="w-8 h-8 object-contain" />
           <span className="font-bold text-lg tracking-tight">Deletable</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
