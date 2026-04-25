@@ -1,9 +1,14 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+let _client: SupabaseClient | null = null
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export function getClient(): SupabaseClient | null {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !key) return null
+  if (!_client) _client = createClient(url, key)
+  return _client
+}
 
 export interface DeviceStat {
   device_id: string
@@ -18,7 +23,10 @@ export interface DeviceStat {
 }
 
 export async function getLeaderboard(limit = 25): Promise<DeviceStat[]> {
-  const { data, error } = await supabase
+  const client = getClient()
+  if (!client) return []
+
+  const { data, error } = await client
     .from('device_stats')
     .select('device_id, total_items_deleted, total_notes_deleted, total_photos_deleted, total_bytes_freed, current_tier, platform, app_version, last_updated_at')
     .order('total_items_deleted', { ascending: false })

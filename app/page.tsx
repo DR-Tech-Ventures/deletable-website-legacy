@@ -1,20 +1,27 @@
 import Link from 'next/link'
 import { VaultMockup, StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
+import {
+  WifiOffIcon, LockIcon, ClockIcon,
+  LockIcon as EncryptIcon, UserIcon, MapPinIcon, SmartphoneIcon, FolderIcon, BarChartIcon,
+} from '@/components/Icons'
 
 const trustPillars = [
   {
-    icon: '📵',
+    Icon: WifiOffIcon,
+    color: 'text-accent bg-accent/10',
     title: 'No cloud. Ever.',
     desc: 'Your notes and photos never leave your device. There is no server, no sync, no backup. What you store stays on your iPhone — period.',
   },
   {
-    icon: '🔐',
+    Icon: LockIcon,
+    color: 'text-accent bg-accent/10',
     title: 'Encrypted at rest',
     desc: 'Every item is encrypted with AES-256 before it touches storage. No other app, no OS file browser, and no one else can read your data.',
   },
   {
-    icon: '⏱️',
+    Icon: ClockIcon,
+    color: 'text-orange bg-orange/10',
     title: 'Deletes itself',
     desc: 'Set a timer once and forget it. Deletable handles the cleanup automatically — even while the app is closed.',
   },
@@ -29,7 +36,7 @@ const useCases = [
   {
     emoji: '👋',
     title: 'That name you just heard',
-    desc: 'Met someone and don\'t want to forget their name? Save it with a 24-hour timer. Gone by tomorrow, without you lifting a finger.',
+    desc: "Met someone and don't want to forget their name? Save it with a 24-hour timer. Gone by tomorrow, without you lifting a finger.",
   },
   {
     emoji: '🛒',
@@ -38,7 +45,7 @@ const useCases = [
   },
   {
     emoji: '📸',
-    title: 'Photos you\'d rather not keep',
+    title: "Photos you'd rather not keep",
     desc: 'A whiteboard, a receipt, a document you needed once. Capture it, set an expiry, and it\'s gone. No manual cleanup required.',
   },
   {
@@ -55,32 +62,38 @@ const useCases = [
 
 const features = [
   {
-    icon: '🔒',
+    Icon: EncryptIcon,
+    color: 'text-accent bg-accent/10',
     title: 'AES-256 Encryption',
     desc: 'Always on — no toggle. Every note and photo is encrypted before storage. The key lives in your iOS Keychain only.',
   },
   {
-    icon: '👤',
+    Icon: UserIcon,
+    color: 'text-accent bg-accent/10',
     title: 'Face ID Lock',
     desc: 'Biometric authentication keeps prying eyes out. Configurable lock timeout from instant to never.',
   },
   {
-    icon: '📍',
+    Icon: MapPinIcon,
+    color: 'text-purple bg-purple/10',
     title: 'Location Reminders',
     desc: 'Geofence notes to a place. Get reminded when you arrive or leave — then watch them vanish.',
   },
   {
-    icon: '🏝️',
+    Icon: SmartphoneIcon,
+    color: 'text-blue bg-blue/10',
     title: 'Dynamic Island',
     desc: 'Live countdown to your next deletion in the Dynamic Island on iPhone 14 Pro+.',
   },
   {
-    icon: '🗂️',
+    Icon: FolderIcon,
+    color: 'text-blue bg-blue/10',
     title: 'Categories',
     desc: 'Organize with custom categories, colors, and icons — each with its own default deletion time.',
   },
   {
-    icon: '📊',
+    Icon: BarChartIcon,
+    color: 'text-green bg-green/10',
     title: 'Stats & Achievements',
     desc: '8 tiers of trash glory. Track bytes freed, items deleted, and rank on the global leaderboard.',
   },
@@ -142,10 +155,12 @@ export default function Home() {
 
       {/* Trust pillars */}
       <section className="py-16 px-6 border-y border-border">
-        <div className="max-w-6xl mx-auto grid sm:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-3 gap-8">
           {trustPillars.map((p) => (
             <div key={p.title} className="flex gap-4">
-              <span className="text-3xl shrink-0">{p.icon}</span>
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${p.color}`}>
+                <p.Icon className="w-5 h-5" />
+              </div>
               <div>
                 <h3 className="font-bold text-white mb-1">{p.title}</h3>
                 <p className="text-text-secondary text-sm leading-relaxed">{p.desc}</p>
@@ -167,7 +182,9 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {useCases.map((u) => (
               <div key={u.title} className="bg-card border border-border rounded-2xl p-6 hover:border-[#3C3C3C] transition-colors">
-                <div className="text-3xl mb-3">{u.emoji}</div>
+                <div className="w-11 h-11 rounded-2xl bg-background flex items-center justify-center text-2xl mb-4 border border-border">
+                  {u.emoji}
+                </div>
                 <h3 className="font-semibold text-white mb-1.5">{u.title}</h3>
                 <p className="text-text-secondary text-sm leading-relaxed">{u.desc}</p>
               </div>
@@ -179,8 +196,10 @@ export default function Home() {
       {/* Privacy callout */}
       <section className="py-16 px-6 bg-card/30">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-card border border-border rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-            <div className="text-6xl shrink-0">🔐</div>
+          <div className="bg-card border border-border rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-start gap-6">
+            <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
+              <LockIcon className="w-7 h-7 text-accent" />
+            </div>
             <div>
               <h2 className="text-2xl font-bold mb-3">Nothing leaves your phone</h2>
               <p className="text-text-secondary leading-relaxed mb-4">
@@ -207,7 +226,9 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f) => (
               <div key={f.title} className="bg-card border border-border rounded-2xl p-6 hover:border-[#3C3C3C] transition-colors">
-                <div className="text-3xl mb-3">{f.icon}</div>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${f.color}`}>
+                  <f.Icon className="w-5 h-5" />
+                </div>
                 <h3 className="font-semibold text-white mb-1.5">{f.title}</h3>
                 <p className="text-text-secondary text-sm leading-relaxed">{f.desc}</p>
               </div>
