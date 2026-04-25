@@ -9,7 +9,6 @@ const links = [
   { href: '/guide', label: 'Guide' },
   { href: '/tiers', label: 'Trash Tiers' },
   { href: '/help', label: 'Help' },
-  { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
 ]
 
