@@ -246,7 +246,7 @@ export default function Home() {
       <section className="py-20 px-6 bg-card/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-3">Climb the trash tiers 🗑️</h2>
+            <h2 className="text-4xl font-bold mb-3">Climb the trash tiers 🦝</h2>
             <p className="text-text-secondary text-lg max-w-xl mx-auto">
               Delete more, rank higher. 8 tiers from Trash Panda to Distinguished Raccoonian.
             </p>
@@ -276,7 +276,7 @@ export default function Home() {
       {/* CTA */}
       <section className="py-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="text-6xl mb-6">🗑️</div>
+          <img src="/raccoon.png" alt="" className="w-32 h-32 object-contain mx-auto mb-6" />
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Start deleting<br />
             <span className="text-gradient">what you don't need.</span>
