@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t border-border mt-20">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="text-xl">🗑️</span>
+          <img src="/raccoon.png" alt="" className="w-6 h-6 object-contain" />
           <span className="font-semibold text-sm">Deletable</span>
           <span className="text-text-tertiary text-sm ml-2">auto-delete. stay clean.</span>
         </div>
