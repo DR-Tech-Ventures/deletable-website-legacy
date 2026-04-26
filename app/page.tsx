@@ -277,7 +277,7 @@ export default function Home() {
       {/* CTA */}
       <section className="py-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <Image src="/raccoon.png" alt="" width={128} height={128} className="object-contain mx-auto mb-6" />
+          <Image src="/raccoon.png" alt="" width={128} height={128} className="object-contain mx-auto mb-6" sizes="128px" />
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Start deleting<br />
             <span className="text-gradient">what you don't need.</span>
