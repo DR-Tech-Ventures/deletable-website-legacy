@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import { CameraIcon, PhotoIcon, MapPinIcon, UserIcon, BellIcon, RefreshIcon, LockIcon } from '@/components/Icons'
 
+export const dynamic = 'force-static'
+
 export const metadata: Metadata = {
   title: 'Privacy Policy — Deletable',
   description: 'How Deletable handles your data — and why almost none of it ever leaves your device.',
 }
 
 type IconComponent = React.ComponentType<{ className?: string }>
+
+const LAST_UPDATED = 'April 23, 2026'
 
 const permissions: { Icon: IconComponent; color: string; name: string; reason: string }[] = [
   { Icon: CameraIcon, color: 'text-blue bg-blue/10', name: 'Camera', reason: 'To capture photos you choose to store in the vault.' },
@@ -18,13 +22,11 @@ const permissions: { Icon: IconComponent; color: string; name: string; reason: s
 ]
 
 export default function PrivacyPage() {
-  const lastUpdated = 'April 23, 2026'
-
   return (
     <div className="max-w-3xl mx-auto px-6 py-20">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold mb-4">Privacy Policy</h1>
-        <p className="text-text-secondary">Last updated: {lastUpdated}</p>
+        <p className="text-text-secondary">Last updated: {LAST_UPDATED}</p>
       </div>
 
       <div className="prose-custom space-y-10">
