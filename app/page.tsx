@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { VaultMockup, StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
 import {
@@ -276,7 +277,7 @@ export default function Home() {
       {/* CTA */}
       <section className="py-24 px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <img src="/raccoon.png" alt="" className="w-32 h-32 object-contain mx-auto mb-6" />
+          <Image src="/raccoon.png" alt="" width={128} height={128} className="object-contain mx-auto mb-6" />
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Start deleting<br />
             <span className="text-gradient">what you don't need.</span>
