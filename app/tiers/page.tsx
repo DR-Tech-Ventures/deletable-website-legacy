@@ -19,7 +19,7 @@ export default async function TiersPage() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
       <div className="text-center mb-16">
-        <Image src="/raccoon.png" alt="Raccoon mascot" width={144} height={144} className="object-contain mx-auto mb-2" />
+        <Image src="/raccoon.png" alt="Raccoon mascot" width={144} height={144} className="object-contain mx-auto mb-2" sizes="144px" />
         <h1 className="text-5xl font-bold mb-4">Trash Tiers</h1>
         <p className="text-text-secondary text-xl max-w-xl mx-auto">
           Delete more to rank higher. 8 tiers stand between you and Distinguished Raccoonian.
@@ -91,7 +91,7 @@ export default async function TiersPage() {
 
         {leaderboard.length === 0 ? (
           <div className="text-center py-16 text-text-secondary">
-            <Image src="/raccoon.png" alt="" width={80} height={80} className="object-contain mx-auto mb-4" />
+            <Image src="/raccoon.png" alt="" width={80} height={80} className="object-contain mx-auto mb-4" sizes="80px" />
             <p>No data yet — be the first to climb the ranks.</p>
           </div>
         ) : (
