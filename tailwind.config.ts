@@ -11,8 +11,8 @@ const config: Config = {
       colors: {
         background: '#0A0A0A',
         card: '#1C1C1C',
-        accent: '#FF3B2F',
-        'accent-hover': '#E02E23',
+        accent: '#00C2A8',
+        'accent-hover': '#00A891',
         border: '#2C2C2C',
         'text-primary': '#FFFFFF',
         'text-secondary': '#A0A0A0',

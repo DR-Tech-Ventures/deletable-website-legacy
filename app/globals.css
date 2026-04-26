@@ -23,17 +23,17 @@ body {
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #FF3B2F 0%, #FF9F0A 100%);
+    background: linear-gradient(135deg, #00C2A8 0%, #00E5CC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glow-accent {
-    box-shadow: 0 0 40px rgba(255, 59, 47, 0.3);
+    box-shadow: 0 0 40px rgba(0, 194, 168, 0.3);
   }
 
   .glow-accent-sm {
-    box-shadow: 0 0 20px rgba(255, 59, 47, 0.2);
+    box-shadow: 0 0 20px rgba(0, 194, 168, 0.2);
   }
 }
