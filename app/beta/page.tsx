@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 // Update this once you have a TestFlight link
 const TESTFLIGHT_URL = 'https://testflight.apple.com/join/tM1QscbP'
-const BETA_EMAIL = 'deletable.app@gmail.com'
+
 
 const steps = [
   {
@@ -220,29 +220,25 @@ export default async function BetaPage({
           </div>
           <div className="bg-card border border-border rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-white mb-1">Send feedback directly</p>
+              <p className="font-semibold text-white mb-1">Two ways to share feedback</p>
               <p className="text-text-secondary text-sm">
-                Reach us at{' '}
-                <a href={`mailto:${BETA_EMAIL}`} className="text-accent hover:text-accent-hover transition-colors">
-                  {BETA_EMAIL}
-                </a>{' '}
-                or use the contact form.
+                Use the TestFlight app&apos;s built-in feedback tool, or fill out our contact form. Both go directly to us.
               </p>
             </div>
             <div className="flex gap-3 shrink-0">
               <a
-                href={`mailto:${BETA_EMAIL}`}
-                className="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-black font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
-              >
-                Email us
-              </a>
-              <a
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-background hover:bg-card border border-border text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+                className="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-black font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
               >
                 Contact form
               </a>
             </div>
+          </div>
+          <div className="mt-4 bg-card/50 border border-border rounded-2xl p-5">
+            <p className="text-sm font-semibold text-white mb-1">How to use TestFlight&apos;s built-in feedback</p>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Open the <span className="text-white">TestFlight app</span> on your iPhone → tap <span className="text-white">Deletable</span> → tap <span className="text-white">Send Beta Feedback</span>. You can include a screenshot and a description. This is the fastest way to report a bug.
+            </p>
           </div>
         </div>
       </section>
