@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { VaultMockup, StatsMockup } from '@/components/PhoneMockup'
+import { StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
 import {
   WifiOffIcon, LockIcon, ClockIcon,
@@ -138,7 +138,15 @@ export default function Home() {
             </div>
             <div className="flex gap-6 items-end shrink-0">
               <div className="translate-y-4">
-                <VaultMockup />
+                <div className="w-[220px] rounded-[2rem] overflow-hidden shadow-2xl border border-[#2C2C2C]">
+                  <Image
+                    src="/vault-screenshot.png"
+                    alt="Deletable Vault"
+                    width={220}
+                    height={476}
+                    className="w-full h-auto"
+                  />
+                </div>
               </div>
               <div className="-translate-y-4">
                 <StatsMockup />
