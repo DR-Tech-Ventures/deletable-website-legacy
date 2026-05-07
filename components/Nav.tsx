@@ -9,7 +9,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/raccoon.png" alt="" width={32} height={32} className="object-contain" priority sizes="32px" />
-          <span className="font-bold text-lg tracking-tight">Deletable</span>
+          <span className="font-bold text-2xl tracking-tight">Deletable</span>
         </Link>
 
         <NavLinks />
