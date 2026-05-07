@@ -46,26 +46,25 @@ export function StatsMockup() {
     <div className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
       {/* Header */}
       <div className="flex items-center gap-1.5 mb-3">
-        <div className="w-6 h-6 rounded-md bg-[#FF3B2F] flex items-center justify-center text-[10px]">🦝</div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/raccoon.png" alt="" className="w-6 h-6 object-contain" />
         <span className="text-white font-bold text-sm">Trash Stats</span>
       </div>
       {/* Tier hero */}
       <div className="bg-[#1C1C1C] rounded-xl p-3 mb-2 text-center">
-        <div className="text-2xl mb-1">🗑️📄🗑️<br/>📦🗑️📦🗑️</div>
-        <div className="flex items-center justify-center gap-1.5 mb-1">
-          <span className="text-base">🗑️</span>
-          <span className="text-white font-bold text-xs">Trash Panda</span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/raccoon.png" alt="" className="w-14 h-14 object-contain mx-auto mb-1" />
+        <div className="text-white font-bold text-xs mb-0.5">Trash Panda</div>
         <div className="text-[#A0A0A0] text-[9px]">Just warming up…</div>
         <div className="mt-2 h-1 bg-[#2C2C2C] rounded-full overflow-hidden">
-          <div className="h-full w-[60%] bg-[#FF3B2F] rounded-full" />
+          <div className="h-full w-[47%] bg-[#0A84FF] rounded-full" />
         </div>
-        <div className="text-[#505050] text-[8px] mt-1">47 / 100 → Bin Raider 🗑️</div>
+        <div className="text-[#505050] text-[8px] mt-1">47 / 100 → Bin Raider</div>
       </div>
       {/* Stats grid */}
       <div className="grid grid-cols-2 gap-1.5">
         {[
-          { label: 'Deleted', value: '47', color: '#FF3B2F' },
+          { label: 'Total Deleted', value: '47', color: '#FF3B2F' },
           { label: 'Space Freed', value: '2.3 MB', color: '#30D158' },
           { label: 'Notes', value: '31', color: '#0A84FF' },
           { label: 'Photos', value: '16', color: '#BF5AF2' },
