@@ -112,8 +112,8 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-sm text-text-secondary mb-6">
-                <span className="w-2 h-2 rounded-full bg-green inline-block" />
-                Available on the App Store
+                <span className="w-2 h-2 rounded-full bg-yellow-400 inline-block" />
+                Coming soon to the App Store
               </div>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-none mb-4">
                 auto-delete.<br />

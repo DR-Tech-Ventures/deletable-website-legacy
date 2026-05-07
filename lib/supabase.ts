@@ -29,6 +29,7 @@ export async function getLeaderboard(limit = 25): Promise<DeviceStat[]> {
   const { data, error } = await client
     .from('device_stats')
     .select('device_id, total_items_deleted, total_notes_deleted, total_photos_deleted, total_bytes_freed, current_tier, platform, app_version, last_updated_at')
+    .gt('total_items_deleted', 0)
     .order('total_items_deleted', { ascending: false })
     .limit(limit)
 
