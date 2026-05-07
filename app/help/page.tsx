@@ -42,7 +42,7 @@ const faqs = [
       },
       {
         q: 'Will I get a warning before something is deleted?',
-        a: 'Yes, if you enable Expiry Reminders in Settings → Notifications. You can receive a push notification 1 hour or 24 hours before an item is deleted.',
+        a: 'Yes, if you enable Expiry Reminders in Settings → Notifications. You\'ll receive a push notification — e.g. "Meeting notes" deletes in 1 hour — either 1 hour or 24 hours before an item expires, depending on which option you choose.',
       },
     ],
   },
@@ -85,6 +85,10 @@ const faqs = [
       {
         q: 'How do I share my stats?',
         a: 'Go to the Stats tab and tap the Share button at the top right. Deletable generates a styled PNG image showing your tier, items deleted, bytes freed, and more — ready to share anywhere.',
+      },
+      {
+        q: 'Can I add a note or photo directly from my home screen?',
+        a: 'Yes. Long-press the Deletable app icon on your home screen and tap Add Note or Add Photo. The shortcut launches the app directly into the new-item flow without opening the full vault first.',
       },
     ],
   },
