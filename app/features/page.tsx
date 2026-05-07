@@ -3,7 +3,7 @@ import {
   FileTextIcon, CameraIcon, FolderIcon, SearchIcon, SlidersIcon,
   ClockIcon, CalendarIcon, RefreshIcon, BellIcon,
   LockIcon, UserIcon, EyeOffIcon, BarChartIcon,
-  MapPinIcon, SmartphoneIcon, MoonIcon,
+  MapPinIcon, SmartphoneIcon, MoonIcon, ZapIcon,
   TrophyIcon, UploadIcon, GlobeIcon,
 } from '@/components/Icons'
 
@@ -131,6 +131,12 @@ const sections: {
         color: 'text-purple bg-purple/10',
         title: 'Dark / Light / System Theme',
         desc: 'Follows your system appearance, or lock it to dark or light mode in Settings.',
+      },
+      {
+        Icon: ZapIcon,
+        color: 'text-purple bg-purple/10',
+        title: 'Home Screen Quick Actions',
+        desc: 'Long-press the Deletable icon on your home screen to instantly add a Note or Photo — no need to open the full app first.',
       },
     ],
   },
