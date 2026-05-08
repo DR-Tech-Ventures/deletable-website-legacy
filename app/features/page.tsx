@@ -147,7 +147,7 @@ const sections: {
         Icon: TrophyIcon,
         color: 'text-green bg-green/10',
         title: '8 Achievement Tiers',
-        desc: 'From Trash Panda (1 item) to Distinguished Raccoonian (1,000 items). Each tier unlocks a new title and emoji pile.',
+        desc: 'From Trash Panda (3 items) to Distinguished Raccoonian (1,000 items). Each tier unlocks a new title and emoji pile.',
       },
       {
         Icon: UploadIcon,

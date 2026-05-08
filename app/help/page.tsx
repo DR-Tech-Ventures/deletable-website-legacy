@@ -65,6 +65,10 @@ const faqs = [
         q: 'What happens to my data if I delete the app?',
         a: 'All vault content is stored locally and will be removed with the app. The anonymous UUID stored in Supabase will become orphaned but contains no data that can identify you.',
       },
+      {
+        q: 'Will I keep my leaderboard position if I delete and reinstall the app?',
+        a: 'No. Deletable uses an anonymous device ID stored in secure storage to track your leaderboard position. On both iOS and Android, this ID is lost when the app is deleted — on iOS, the Keychain is cleared when the last app from a developer is removed; on Android, secure storage is always wiped on uninstall. There is no account system, so there is currently no way to recover your leaderboard position after deleting the app.',
+      },
     ],
   },
   {
