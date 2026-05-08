@@ -2,10 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
-import {
-  WifiOffIcon, LockIcon, ClockIcon,
-  LockIcon as EncryptIcon, UserIcon, MapPinIcon, SmartphoneIcon, FolderIcon, BarChartIcon,
-} from '@/components/Icons'
+import { WifiOffIcon, LockIcon, ClockIcon } from '@/components/Icons'
 
 const trustPillars = [
   {
@@ -61,44 +58,6 @@ const useCases = [
   },
 ]
 
-const features = [
-  {
-    Icon: EncryptIcon,
-    color: 'text-accent bg-accent/10',
-    title: 'AES-256 Encryption',
-    desc: 'Always on — no toggle. Every note and photo is encrypted before storage. The key lives in your iOS Keychain only.',
-  },
-  {
-    Icon: UserIcon,
-    color: 'text-accent bg-accent/10',
-    title: 'Face ID Lock',
-    desc: 'Biometric authentication keeps prying eyes out. Configurable lock timeout from instant to never.',
-  },
-  {
-    Icon: MapPinIcon,
-    color: 'text-purple bg-purple/10',
-    title: 'Location Reminders',
-    desc: 'Geofence notes to a place. Get reminded when you arrive or leave — then watch them vanish.',
-  },
-  {
-    Icon: SmartphoneIcon,
-    color: 'text-blue bg-blue/10',
-    title: 'Dynamic Island',
-    desc: 'Live countdown to your next deletion in the Dynamic Island on iPhone 14 Pro+.',
-  },
-  {
-    Icon: FolderIcon,
-    color: 'text-blue bg-blue/10',
-    title: 'Categories',
-    desc: 'Organize with custom categories, colors, and icons — each with its own default deletion time.',
-  },
-  {
-    Icon: BarChartIcon,
-    color: 'text-green bg-green/10',
-    title: 'Stats & Achievements',
-    desc: '8 tiers of trash glory. Track bytes freed, items deleted, and rank on the global leaderboard.',
-  },
-]
 
 export default function Home() {
   const topTiers = TIERS.slice(5)
@@ -215,32 +174,6 @@ export default function Home() {
                 See how the encryption works →
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features grid */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-3">Everything else it does</h2>
-            <p className="text-text-secondary text-lg max-w-xl mx-auto">Privacy is the foundation. These are the features built on top of it.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {features.map((f) => (
-              <div key={f.title} className="bg-card border border-border rounded-2xl p-6 hover:border-[#3C3C3C] transition-colors">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${f.color}`}>
-                  <f.Icon className="w-5 h-5" />
-                </div>
-                <h3 className="font-semibold text-white mb-1.5">{f.title}</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/features" className="text-accent hover:text-accent-hover font-medium transition-colors">
-              View all features →
-            </Link>
           </div>
         </div>
       </section>
