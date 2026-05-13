@@ -5,7 +5,7 @@ import { getLeaderboard, formatBytes, truncateId } from '@/lib/supabase'
 import { TierIcon } from '@/components/TierIcon'
 
 export const metadata: Metadata = {
-  title: 'Tiers & Leaderboard — Deletable',
+  title: 'Trash Stats — Deletable',
   description: 'See all 8 achievement tiers and the global anonymous leaderboard of top deleters.',
 }
 
@@ -13,14 +13,14 @@ export const revalidate = 300 // refresh leaderboard every 5 min
 
 const medalColors = ['#FFD700', '#C0C0C0', '#CD7F32']
 
-export default async function TiersPage() {
+export default async function TrashStatsPage() {
   const leaderboard = await getLeaderboard(25)
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
       <div className="text-center mb-16">
         <Image src="/raccoon.png" alt="Raccoon mascot" width={144} height={144} className="object-contain mx-auto mb-2" sizes="144px" />
-        <h1 className="text-5xl font-bold mb-4">Trash Tiers</h1>
+        <h1 className="text-5xl font-bold mb-4">Trash Stats</h1>
         <p className="text-text-secondary text-xl max-w-xl mx-auto">
           Delete more to rank higher. 8 tiers stand between you and Distinguished Raccoonian.
         </p>

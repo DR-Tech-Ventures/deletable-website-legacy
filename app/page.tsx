@@ -202,7 +202,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href="/tiers" className="text-accent hover:text-accent-hover font-medium transition-colors">
+            <Link href="/trash-stats" className="text-accent hover:text-accent-hover font-medium transition-colors">
               See all tiers + leaderboard →
             </Link>
           </div>
