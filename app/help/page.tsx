@@ -24,8 +24,8 @@ const faqs = [
         a: 'Yes. Open the item and tap the timer badge at the top of the card to edit the expiry time.',
       },
       {
-        q: 'How do I set up Face ID?',
-        a: 'Go to Settings → Security → Lock App and toggle it on. Deletable will use Face ID (or Touch ID on supported devices) with your device passcode as a fallback.',
+        q: 'How do I set up Face ID or a passcode lock?',
+        a: 'Go to Settings → Security → Lock App and toggle it on. By default Deletable uses Face ID (or Touch ID on supported devices). To use a 4-digit PIN instead, tap Lock Method and select Passcode. Both options lock the app on the same screen.',
       },
     ],
   },
@@ -62,6 +62,10 @@ const faqs = [
         a: 'We collect fully anonymous stats: total items deleted, bytes freed, current tier, and vault sizes. These are linked to a random device UUID generated at first launch — not your name, Apple ID, or any identifying information. See our Privacy Policy for full details.',
       },
       {
+        q: 'Does Deletable hide my content in the app switcher?',
+        a: 'Yes. When you switch apps, Deletable shows a privacy overlay with just the app logo instead of your vault contents. Expiry notifications are also redacted — the alert reads "A note or photo deletes in X" rather than showing your item title on the lock screen.',
+      },
+      {
         q: 'What happens to my data if I delete the app?',
         a: 'All vault content is stored locally and will be removed with the app. The anonymous UUID stored in Supabase will become orphaned but contains no data that can identify you.',
       },
@@ -75,8 +79,8 @@ const faqs = [
     section: 'Features',
     questions: [
       {
-        q: 'How do categories work?',
-        a: 'Categories let you group items with a custom name, color, and icon. You can also set a default deletion time per category, so new items added to that category automatically use that timer.',
+        q: 'How do folders work?',
+        a: 'Folders let you group items with a custom name, color, and icon. You can also set a default deletion time per folder, so new items added to that folder automatically use that timer. Tap the folder icon when creating or editing an item to assign it.',
       },
       {
         q: 'What is location context?',
@@ -89,6 +93,10 @@ const faqs = [
       {
         q: 'How do I share my stats?',
         a: 'Go to the Stats tab and tap the Share button at the top right. Deletable generates a styled PNG image showing your tier, items deleted, bytes freed, and more — ready to share anywhere.',
+      },
+      {
+        q: 'Can I save content from Safari or Photos into Deletable?',
+        a: 'Yes. Deletable includes a Share Extension. In Safari, tap the Share button and choose Deletable to save a URL as an encrypted note with a deletion timer. In the Photos app, select a photo, tap Share, and choose Deletable to add it directly to your vault.',
       },
       {
         q: 'Can I add a note or photo directly from my home screen?',
