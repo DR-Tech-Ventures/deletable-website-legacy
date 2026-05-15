@@ -7,7 +7,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'User Guide — Deletable',
-  description: 'A complete guide to using Deletable — creating notes and photos, setting timers, organizing with categories, and more.',
+  description: 'A complete guide to using Deletable — creating notes and photos, setting timers, organizing with folders, and more.',
 }
 
 type IconComponent = React.ComponentType<{ className?: string }>
@@ -59,6 +59,10 @@ const sections: {
         title: 'Save & close',
         body: 'Tap Save. The note is AES-256 encrypted and stored locally. A short preview (first 80 characters) appears on the vault card so you can identify it at a glance.',
       },
+      {
+        title: 'Share from Safari',
+        body: 'In Safari (or any app that shares URLs), tap the Share button and choose Deletable. The share extension opens a timer picker and saves the link as an encrypted note — no need to open the app first.',
+      },
     ],
   },
   {
@@ -70,6 +74,10 @@ const sections: {
       {
         title: 'Add a photo',
         body: 'Tap + → Photo, then choose Camera to capture a new shot or Library to import one from your device. Deletable encrypts the full image and generates an encrypted thumbnail immediately.',
+      },
+      {
+        title: 'Share from the Photos app',
+        body: 'In the iOS Photos app, select any photo, tap the Share button, and choose Deletable. The share extension lets you set a deletion timer and save the photo directly into your vault without opening the app first.',
       },
       {
         title: 'View & share',
@@ -109,23 +117,23 @@ const sections: {
     id: 'categories',
     Icon: FolderIcon,
     color: 'text-blue bg-blue/10',
-    heading: 'Categories',
+    heading: 'Folders',
     steps: [
       {
-        title: 'Create a category',
-        body: 'Go to the Categories tab and tap +. Give the category a name, choose a color (red, orange, green, blue, purple, and more), and pick an icon from a set of SF Symbols.',
+        title: 'Create a folder',
+        body: 'Tap the folder icon in the Vault tab and then +. Give it a name, choose from 24 colors across 6 groups, and pick an icon from a set of SF Symbols.',
       },
       {
-        title: 'Set a default timer per category',
-        body: 'Each category can have its own default deletion time. Items added to that category automatically use that timer — no need to choose one every time.',
+        title: 'Set a default timer per folder',
+        body: 'Each folder can have its own default deletion time. Items added to that folder automatically use that timer — no need to choose one every time.',
       },
       {
         title: 'Filter the vault',
-        body: 'In the Vault tab, tap a category name in the filter bar at the top to show only items in that group. Tap All to return to the full vault.',
+        body: 'Tap a folder name in the filter bar at the top of the Vault tab to show only items in that group. Tap All to return to the full vault.',
       },
       {
-        title: 'Delete a category',
-        body: 'Long-press a category to delete it. The category is removed but its items stay in the vault — they just become uncategorized.',
+        title: 'Delete a folder',
+        body: 'Long-press a folder to delete it. The folder is removed but its items stay in the vault — they just become unorganized.',
       },
     ],
   },
@@ -140,12 +148,16 @@ const sections: {
         body: "Encryption is always on — there's no toggle to disable it. Every note and photo is encrypted before being written to the local SQLite database. Your master key is stored in the iOS Keychain and never leaves your device.",
       },
       {
-        title: 'Enable Face ID / Touch ID',
-        body: 'Go to Settings → Security → Lock App and turn it on. Deletable will require Face ID (or Touch ID / device passcode as a fallback) every time you open the app.',
+        title: 'Enable Face ID / Touch ID or a passcode',
+        body: 'Go to Settings → Security → Lock App and turn it on. By default Deletable uses Face ID or Touch ID. To use a 4-digit PIN instead, tap Lock Method and select Passcode. Both options lock the app on the same unlock screen.',
       },
       {
         title: 'Configure the lock timeout',
         body: 'Under Settings → Security → Lock After, choose how long Deletable waits before re-locking: Immediately, 1 minute, 5 minutes, 15 minutes, or Never. "Never" keeps the app unlocked until you close it.',
+      },
+      {
+        title: 'Privacy shield',
+        body: 'When you switch apps, Deletable shows a privacy overlay with just the app logo instead of your vault contents — so nearby eyes can\'t glimpse your notes in the app switcher.',
       },
       {
         title: 'No cloud sync of content',
@@ -165,7 +177,7 @@ const sections: {
       },
       {
         title: 'Deletion confirmation',
-        body: "When an item is automatically deleted, Deletable can send a confirmation notification containing the item's title. Toggle this in Settings → Notifications.",
+        body: 'When an item is automatically deleted, Deletable can send a confirmation notification. The alert uses a generic message to avoid leaking your note titles on the lock screen. Toggle this in Settings → Notifications.',
       },
       {
         title: 'Location-based reminders',
