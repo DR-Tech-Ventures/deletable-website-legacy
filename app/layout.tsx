@@ -27,12 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col bg-background text-text-primary">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-card focus:text-white focus:px-4 focus:py-2 focus:rounded-xl focus:border focus:border-accent"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-card focus:text-white focus:px-4 focus:py-2 focus:rounded-xl focus:border focus:border-accent"
         >
           Skip to main content
         </a>
         <Nav />
-        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-hidden">{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />
