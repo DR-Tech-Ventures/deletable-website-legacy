@@ -15,7 +15,7 @@ export default function ContactForm() {
     return (
       <div className="text-center py-10" role="status" aria-live="polite">
         <div className="text-5xl mb-4" aria-hidden="true">🦝</div>
-        <h3 ref={successRef} tabIndex={-1} className="text-xl font-bold mb-2 focus:outline-none">
+        <h3 ref={successRef} tabIndex={-1} className="text-xl font-bold mb-2 focus:outline-hidden">
           Message received!
         </h3>
         <p className="text-text-secondary text-sm">
@@ -38,7 +38,7 @@ export default function ContactForm() {
             type="text"
             required
             placeholder="Your name"
-            className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
+            className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-hidden focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
           />
         </div>
         <div>
@@ -51,7 +51,7 @@ export default function ContactForm() {
             type="email"
             required
             placeholder="you@example.com"
-            className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
+            className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-hidden focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
           />
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function ContactForm() {
           name="subject"
           type="text"
           placeholder="What's this about?"
-          className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
+          className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-hidden focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
         />
       </div>
 
@@ -79,7 +79,7 @@ export default function ContactForm() {
           required
           rows={5}
           placeholder="Tell us what's on your mind..."
-          className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors resize-none"
+          className="w-full bg-background border border-border rounded-xl px-4 py-3 text-sm text-white placeholder:text-text-tertiary focus:outline-hidden focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors resize-none"
         />
       </div>
 
@@ -90,7 +90,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full bg-accent hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="w-full bg-accent hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-xl transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {pending ? 'Sending…' : 'Send Message'}
       </button>

@@ -8,7 +8,7 @@ export function VaultMockup() {
     { title: 'Wi-Fi password', timer: '2d 11h', color: '#0A84FF', type: 'note' },
   ]
   return (
-    <div aria-hidden="true" className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
+    <div aria-hidden="true" className="bg-[#0A0A0A] rounded-4xl p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-1.5">
@@ -45,7 +45,7 @@ export function VaultMockup() {
 
 export function StatsMockup() {
   return (
-    <div aria-hidden="true" className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
+    <div aria-hidden="true" className="bg-[#0A0A0A] rounded-4xl p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
       {/* Header */}
       <div className="flex items-center gap-1.5 mb-3">
         <Image src="/raccoon.png" alt="" width={24} height={24} className="w-6 h-6 object-contain" />

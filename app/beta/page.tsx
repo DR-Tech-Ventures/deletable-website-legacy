@@ -107,14 +107,14 @@ export default async function BetaPage({
               name="password"
               placeholder="Access code"
               autoComplete="current-password"
-              className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
+              className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder:text-text-tertiary focus:outline-hidden focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
             />
             {params.error === '1' && (
               <p role="alert" className="text-sm text-red-400">Incorrect access code. Try again.</p>
             )}
             <button
               type="submit"
-              className="w-full bg-accent hover:bg-accent-hover text-black font-semibold py-3 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="w-full bg-accent hover:bg-accent-hover text-black font-semibold py-3 rounded-xl transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Continue
             </button>

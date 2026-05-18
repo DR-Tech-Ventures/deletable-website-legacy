@@ -66,7 +66,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden pt-24 pb-32 px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-accent/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 text-center lg:text-left">
@@ -97,7 +97,7 @@ export default function Home() {
             </div>
             <div className="flex gap-6 items-end shrink-0">
               <div className="translate-y-4">
-                <div className="w-[220px] rounded-[2rem] overflow-hidden shadow-2xl border border-[#2C2C2C]">
+                <div className="w-[220px] rounded-4xl overflow-hidden shadow-2xl border border-[#2C2C2C]">
                   <Image
                     src="/vault-screenshot.png"
                     alt="Deletable Vault"

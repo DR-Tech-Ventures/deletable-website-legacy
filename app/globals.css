@@ -1,62 +1,99 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  color-scheme: dark;
+@theme {
+  --color-background: #0a0a0a;
+  --color-card: #1c1c1c;
+  --color-accent: #00c2a8;
+  --color-accent-hover: #00a891;
+  --color-border: #2c2c2c;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-text-tertiary: #8a8a8a;
+  --color-green: #30d158;
+  --color-blue: #0a84ff;
+  --color-purple: #bf5af2;
+  --color-orange: #ff9f0a;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, SF Pro Display, Segoe UI, sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
 }
 
-* {
-  box-sizing: border-box;
-}
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
   *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-body {
-  background-color: #0A0A0A;
-  color: #FFFFFF;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-  -webkit-font-smoothing: antialiased;
+@utility text-gradient {
+  color: #00c2a8;
+  background: linear-gradient(135deg, #00c2a8 0%, #00e5cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+@utility glow-accent {
+  box-shadow: 0 0 40px rgba(0, 194, 168, 0.3);
+}
+
+@utility glow-accent-sm {
+  box-shadow: 0 0 20px rgba(0, 194, 168, 0.2);
 }
 
 @layer utilities {
-  .text-gradient {
-    color: #00C2A8;
-    background: linear-gradient(135deg, #00C2A8 0%, #00E5CC 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  :root {
+    color-scheme: dark;
   }
 
-  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-    .text-gradient {
-      background: none;
-      -webkit-text-fill-color: currentColor;
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 
-  .glow-accent {
-    box-shadow: 0 0 40px rgba(0, 194, 168, 0.3);
-  }
-
-  .glow-accent-sm {
-    box-shadow: 0 0 20px rgba(0, 194, 168, 0.2);
+  body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
