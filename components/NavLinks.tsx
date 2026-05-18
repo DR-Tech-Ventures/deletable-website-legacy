@@ -14,12 +14,12 @@ const links = [
 export default function NavLinks() {
   const pathname = usePathname()
   return (
-    <nav className="hidden md:flex items-center gap-1">
+    <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
       {links.map(({ href, label }) => (
         <Link
           key={href}
           href={href}
-          className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+          className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
             pathname === href
               ? 'bg-card text-white'
               : 'text-text-secondary hover:text-white hover:bg-card'

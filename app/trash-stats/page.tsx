@@ -116,9 +116,12 @@ export default async function TrashStatsPage() {
                 >
                   <div className="flex flex-col items-center gap-0.5">
                     {i < 3 ? (
-                      <span className="text-xl leading-none">{medals[i]}</span>
+                      <>
+                        <span className="sr-only">Rank {i + 1}</span>
+                        <span aria-hidden="true" className="text-xl leading-none">{medals[i]}</span>
+                      </>
                     ) : (
-                      <span className="text-sm font-bold" style={{ color: '#505050' }}>{i + 1}</span>
+                      <span className="text-sm font-bold text-text-tertiary">{i + 1}</span>
                     )}
                   </div>
                   <div className="flex items-center gap-2 min-w-0">

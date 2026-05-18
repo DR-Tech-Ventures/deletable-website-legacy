@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export function VaultMockup() {
   const items = [
     { title: 'Bank login', timer: '1h 47m', color: '#FF3B2F', type: 'note' },
@@ -6,7 +8,7 @@ export function VaultMockup() {
     { title: 'Wi-Fi password', timer: '2d 11h', color: '#0A84FF', type: 'note' },
   ]
   return (
-    <div className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
+    <div aria-hidden="true" className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-1.5">
@@ -43,17 +45,15 @@ export function VaultMockup() {
 
 export function StatsMockup() {
   return (
-    <div className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
+    <div aria-hidden="true" className="bg-[#0A0A0A] rounded-[2rem] p-4 w-[220px] border border-[#2C2C2C] shadow-2xl">
       {/* Header */}
       <div className="flex items-center gap-1.5 mb-3">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/raccoon.png" alt="" className="w-6 h-6 object-contain" />
+        <Image src="/raccoon.png" alt="" width={24} height={24} className="w-6 h-6 object-contain" />
         <span className="text-white font-bold text-sm">Trash Stats</span>
       </div>
       {/* Tier hero */}
       <div className="bg-[#1C1C1C] rounded-xl p-3 mb-2 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/raccoon.png" alt="" className="w-14 h-14 object-contain mx-auto mb-1" />
+        <Image src="/raccoon.png" alt="" width={56} height={56} className="w-14 h-14 object-contain mx-auto mb-1" />
         <div className="text-white font-bold text-xs mb-0.5">Trash Panda</div>
         <div className="text-[#A0A0A0] text-[9px]">Just warming up…</div>
         <div className="mt-2 h-1 bg-[#2C2C2C] rounded-full overflow-hidden">

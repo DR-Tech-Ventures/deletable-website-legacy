@@ -143,7 +143,7 @@ export default function HelpPage() {
           <a
             key={section.section}
             href={`#${section.section.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-            className="bg-card border border-border hover:border-[#3C3C3C] text-text-secondary hover:text-white text-sm px-4 py-2 rounded-xl transition-colors"
+            className="bg-card border border-border hover:border-[#3C3C3C] text-text-secondary hover:text-white text-sm px-4 py-2.5 rounded-xl transition-colors"
           >
             {section.section}
           </a>
@@ -166,6 +166,7 @@ export default function HelpPage() {
                       className="w-5 h-5 text-text-tertiary shrink-0 transition-transform group-open:rotate-180"
                       viewBox="0 0 20 20"
                       fill="currentColor"
+                      aria-hidden="true"
                     >
                       <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                     </svg>
@@ -184,7 +185,7 @@ export default function HelpPage() {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-1">Still need help?</h2>
           <p className="text-text-secondary text-sm">
-            Questions, feedback, or bug reports — send us a message and we'll get back to you.
+            Questions, feedback, or bug reports — send us a message and we&apos;ll get back to you.
           </p>
         </div>
         <ContactForm />

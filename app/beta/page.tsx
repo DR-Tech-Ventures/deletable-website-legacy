@@ -100,20 +100,21 @@ export default async function BetaPage({
             <p className="text-text-secondary text-sm">Enter your access code to continue.</p>
           </div>
           <form action={authenticate} className="space-y-4">
+            <label htmlFor="beta-password" className="sr-only">Access code</label>
             <input
+              id="beta-password"
               type="password"
               name="password"
               placeholder="Access code"
               autoComplete="current-password"
-              autoFocus
-              className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent transition-colors"
+              className="w-full bg-card border border-border rounded-xl px-4 py-3 text-white placeholder:text-text-tertiary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/60 transition-colors"
             />
             {params.error === '1' && (
-              <p className="text-sm text-red-400">Incorrect access code. Try again.</p>
+              <p role="alert" className="text-sm text-red-400">Incorrect access code. Try again.</p>
             )}
             <button
               type="submit"
-              className="w-full bg-accent hover:bg-accent-hover text-black font-semibold py-3 rounded-xl transition-colors"
+              className="w-full bg-accent hover:bg-accent-hover text-black font-semibold py-3 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Continue
             </button>

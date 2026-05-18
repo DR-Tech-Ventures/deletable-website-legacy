@@ -16,7 +16,7 @@ const config: Config = {
         border: '#2C2C2C',
         'text-primary': '#FFFFFF',
         'text-secondary': '#A0A0A0',
-        'text-tertiary': '#505050',
+        'text-tertiary': '#8A8A8A',
         green: '#30D158',
         blue: '#0A84FF',
         purple: '#BF5AF2',
