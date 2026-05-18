@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "checkly:test": "checkly test",
     "checkly:deploy": "checkly deploy"
   },
@@ -14,19 +14,18 @@
     "@supabase/supabase-js": "^2.106.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "next": "^15.5.18",
+    "next": "^16.2.6",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
     "@types/node": "^20.19.41",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.19",
     "checkly": "^7.15.0",
     "eslint": "^9",
-    "eslint-config-next": "^15.5.18",
+    "eslint-config-next": "^16.2.6",
     "postcss": "^8.5.14",
     "tailwindcss": "^3.4.4",
     "typescript": "^5"

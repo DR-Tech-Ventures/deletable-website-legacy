@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -13,15 +13,17 @@ const links = [
   { href: '/privacy', label: 'Privacy' },
 ]
 
+const emptySubscribe = () => () => {}
+
 export default function NavMobileMenu() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const firstLinkRef = useRef<HTMLAnchorElement>(null)
 
-  useEffect(() => { setMounted(true) }, [])
-  useEffect(() => { setMenuOpen(false) }, [pathname])
+  // Client-only gate for the portal (document.body is absent during SSR).
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false)
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -77,6 +79,7 @@ export default function NavMobileMenu() {
                   key={href}
                   ref={i === 0 ? firstLinkRef : undefined}
                   href={href}
+                  onClick={() => setMenuOpen(false)}
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                     pathname === href
                       ? 'bg-card text-white'
