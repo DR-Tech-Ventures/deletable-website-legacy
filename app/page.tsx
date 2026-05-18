@@ -84,7 +84,7 @@ export default function Home() {
                 Gone when you say so.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <span className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/10 text-white/40 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
+                <span className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
                   Coming Soon
                 </span>
                 <Link
@@ -167,7 +167,7 @@ export default function Home() {
               <p className="text-text-secondary leading-relaxed mb-4">
                 Deletable has no cloud, no account, and no server that stores your content.
                 Everything is encrypted with AES-256 and locked inside your device.
-                Other apps can't access it. iOS can't read it. We can't see it.
+                Other apps can&apos;t access it. iOS can&apos;t read it. We can&apos;t see it.
                 The only person who can open your vault is you — with your face.
               </p>
               <Link href="/features" className="text-accent hover:text-accent-hover font-medium text-sm transition-colors">
@@ -215,12 +215,12 @@ export default function Home() {
           <Image src="/raccoon.png" alt="" width={128} height={128} className="object-contain mx-auto mb-6" sizes="128px" />
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Start deleting<br />
-            <span className="text-gradient">what you don't need.</span>
+            <span className="text-gradient">what you don&apos;t need.</span>
           </h2>
           <p className="text-text-secondary text-lg mb-8">
             Free download. No account. No cloud. Nothing stored anywhere but your pocket.
           </p>
-          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/40 font-semibold px-8 py-4 rounded-2xl cursor-not-allowed select-none text-lg">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-8 py-4 rounded-2xl cursor-not-allowed select-none text-lg">
             Coming Soon
           </span>
         </div>

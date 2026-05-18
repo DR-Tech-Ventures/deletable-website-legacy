@@ -2,7 +2,7 @@ import { Tier } from '@/lib/tiers'
 
 function DumpsterSvg() {
   return (
-    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" style={{ width: '1em', height: '1em', display: 'inline-block', verticalAlign: '-0.125em' }}>
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style={{ width: '1em', height: '1em', display: 'inline-block', verticalAlign: '-0.125em' }}>
       {/* main body */}
       <rect x="4" y="11" width="28" height="18" rx="2" fill="#8B5CF6" />
       {/* top rim */}
@@ -23,10 +23,14 @@ function DumpsterSvg() {
 export function TierIcon({ tier, className }: { tier: Tier; className?: string }) {
   if (tier.id === 'dumpster-diver') {
     return (
-      <span className={className}>
+      <span className={className} role="img" aria-label={tier.name}>
         <DumpsterSvg />
       </span>
     )
   }
-  return <span className={className}>{tier.emoji}</span>
+  return (
+    <span className={className} role="img" aria-label={tier.name}>
+      <span aria-hidden="true">{tier.emoji}</span>
+    </span>
+  )
 }

@@ -14,7 +14,7 @@ export default function Nav() {
 
         <NavLinks />
 
-        <span className="hidden md:inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/40 text-sm font-semibold px-4 py-2 rounded-xl cursor-not-allowed select-none">
+        <span className="hidden md:inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 text-sm font-semibold px-4 py-2 rounded-xl cursor-not-allowed select-none">
           Coming Soon
         </span>
 

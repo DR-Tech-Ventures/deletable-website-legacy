@@ -14,6 +14,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background-color: #0A0A0A;
   color: #FFFFFF;
@@ -23,10 +38,18 @@ body {
 
 @layer utilities {
   .text-gradient {
+    color: #00C2A8;
     background: linear-gradient(135deg, #00C2A8 0%, #00E5CC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .text-gradient {
+      background: none;
+      -webkit-text-fill-color: currentColor;
+    }
   }
 
   .glow-accent {

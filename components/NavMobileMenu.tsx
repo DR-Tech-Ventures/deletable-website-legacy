@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -17,6 +17,8 @@ export default function NavMobileMenu() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const firstLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => { setMounted(true) }, [])
   useEffect(() => { setMenuOpen(false) }, [pathname])
@@ -25,17 +27,32 @@ export default function NavMobileMenu() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    firstLinkRef.current?.focus()
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false)
+        buttonRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [menuOpen])
+
   return (
     <>
       <button
-        className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg hover:bg-card transition-colors"
+        ref={buttonRef}
+        className="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-lg hover:bg-card transition-colors"
         onClick={() => setMenuOpen(o => !o)}
         aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
       >
-        <span className={`block w-5 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
-        <span className={`block w-5 h-0.5 bg-white transition-opacity duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
-        <span className={`block w-5 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+        <span aria-hidden="true" className={`block w-5 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+        <span aria-hidden="true" className={`block w-5 h-0.5 bg-white transition-opacity duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
+        <span aria-hidden="true" className={`block w-5 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
       </button>
 
       {mounted && createPortal(
@@ -48,14 +65,17 @@ export default function NavMobileMenu() {
             />
           )}
           <div
+            id="mobile-menu"
+            inert={!menuOpen}
             className={`fixed top-16 left-0 right-0 z-40 bg-background border-b border-border md:hidden transition-transform duration-200 ${
               menuOpen ? 'translate-y-0' : '-translate-y-full pointer-events-none'
             }`}
           >
-            <nav className="flex flex-col px-6 py-4 gap-1">
-              {links.map(({ href, label }) => (
+            <nav aria-label="Mobile" className="flex flex-col px-6 py-4 gap-1">
+              {links.map(({ href, label }, i) => (
                 <Link
                   key={href}
+                  ref={i === 0 ? firstLinkRef : undefined}
                   href={href}
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                     pathname === href
