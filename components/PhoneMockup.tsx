@@ -53,7 +53,7 @@ export function StatsMockup() {
       </div>
       {/* Tier hero */}
       <div className="bg-[#1C1C1C] rounded-xl p-3 mb-2 text-center">
-        <Image src="/raccoon.png" alt="" width={56} height={56} sizes="56px" className="w-14 h-14 object-contain mx-auto mb-1" />
+        <Image src="/raccoon.png" alt="" width={56} height={56} sizes="56px" priority className="w-14 h-14 object-contain mx-auto mb-1" />
         <div className="text-white font-bold text-xs mb-0.5">Trash Panda</div>
         <div className="text-[#A0A0A0] text-[9px]">Just warming up…</div>
         <div className="mt-2 h-1 bg-[#2C2C2C] rounded-full overflow-hidden">

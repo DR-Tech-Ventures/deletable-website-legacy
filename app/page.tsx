@@ -111,6 +111,8 @@ export default function Home() {
                     width={220}
                     height={476}
                     className="w-full h-auto"
+                    sizes="220px"
+                    priority
                   />
                 </div>
               </div>
