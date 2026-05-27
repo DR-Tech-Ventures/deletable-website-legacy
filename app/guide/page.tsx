@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {
   FileTextIcon, CameraIcon, ClockIcon, FolderIcon,
   LockIcon, BellIcon, SlidersIcon, TrophyIcon, ToolIcon,
+  AppleIcon, AndroidIcon,
 } from '@/components/Icons'
 
 export const metadata: Metadata = {
@@ -60,8 +61,8 @@ const sections: {
         body: 'Tap Save. The note is AES-256 encrypted and stored locally. A short preview (first 80 characters) appears on the vault card so you can identify it at a glance.',
       },
       {
-        title: 'Share from Safari',
-        body: 'In Safari (or any app that shares URLs), tap the Share button and choose Deletable. The share extension opens a timer picker and saves the link as an encrypted note — no need to open the app first.',
+        title: 'Share from another app',
+        body: 'In Safari, Chrome, or any app that shares URLs or text, tap the Share button and choose Deletable. On iOS this routes through a native share extension; on Android it uses the system share sheet (ACTION_SEND). Both open the same timer + folder picker and save the content as an encrypted note — no need to open the app first.',
       },
     ],
   },
@@ -77,7 +78,7 @@ const sections: {
       },
       {
         title: 'Share from the Photos app',
-        body: 'In the iOS Photos app, select any photo, tap the Share button, and choose Deletable. The share extension lets you set a deletion timer and save the photo directly into your vault without opening the app first.',
+        body: 'In the iOS Photos app or Android Gallery, select any photo, tap the Share button, and choose Deletable. The share flow lets you set a deletion timer and save the photo directly into your vault without opening the app first.',
       },
       {
         title: 'View & share',
@@ -105,7 +106,7 @@ const sections: {
       },
       {
         title: 'Background purge',
-        body: 'Deletable registers an iOS background fetch task that checks for expired items every 15 minutes — even when the app is closed. Enable Background App Refresh for Deletable in iOS Settings to keep this running reliably.',
+        body: "Deletable registers a background fetch task that checks for expired items every ~15 minutes — even when the app is closed. On iOS, enable Background App Refresh for Deletable in Settings; on Android, make sure battery optimization isn't restricting Deletable so the OS keeps running the task reliably.",
       },
       {
         title: 'Color-coded countdowns',
@@ -145,11 +146,11 @@ const sections: {
     steps: [
       {
         title: 'AES-256 encryption',
-        body: "Encryption is always on — there's no toggle to disable it. Every note and photo is encrypted before being written to the local SQLite database. Your master key is stored in the iOS Keychain and never leaves your device.",
+        body: "Encryption is always on — there's no toggle to disable it. Every note and photo is encrypted before being written to the local SQLite database. Your master key is stored in the iOS Keychain or Android Keystore and never leaves your device.",
       },
       {
-        title: 'Enable Face ID / Touch ID or a passcode',
-        body: 'Go to Settings → Security → Lock App and turn it on. By default Deletable uses Face ID or Touch ID. To use a 4-digit PIN instead, tap Lock Method and select Passcode. Both options lock the app on the same unlock screen.',
+        title: 'Enable biometric unlock or a passcode',
+        body: 'Go to Settings → Security → Lock App and turn it on. Deletable uses Face ID or Touch ID on iOS and fingerprint on Android by default. To use a 4-digit PIN instead, tap Lock Method and select Passcode. Both options lock the app on the same unlock screen.',
       },
       {
         title: 'Configure the lock timeout',
@@ -157,7 +158,7 @@ const sections: {
       },
       {
         title: 'Privacy shield',
-        body: 'When you switch apps, Deletable shows a privacy overlay with just the app logo instead of your vault contents — so nearby eyes can\'t glimpse your notes in the app switcher.',
+        body: "When you switch apps, Deletable hides your vault contents. iOS shows a privacy overlay with just the app logo; Android sets FLAG_SECURE so the OS blanks the preview and blocks system screenshots while Deletable is backgrounded.",
       },
       {
         title: 'No cloud sync of content',
@@ -185,7 +186,11 @@ const sections: {
       },
       {
         title: 'Dynamic Island (iPhone 14 Pro+)',
-        body: 'On supported devices, a Live Activity in the Dynamic Island shows a countdown to your next expiring item. Toggle this in Settings → Display → Dynamic Island.',
+        body: 'On supported iPhones, a Live Activity in the Dynamic Island shows a countdown to your next expiring item. Toggle this in Settings → Display → Dynamic Island.',
+      },
+      {
+        title: 'Home-screen countdown widget (Android)',
+        body: "On Android, add the Deletable widget to your home screen for a live countdown to your soonest-to-expire item. It refreshes every ~15 minutes from the same background task that runs the auto-deletion sweep.",
       },
     ],
   },
@@ -241,7 +246,7 @@ const sections: {
       },
       {
         title: 'Theme',
-        body: 'Choose Dark, Light, or System in Settings → Appearance. "System" follows your iOS appearance setting automatically.',
+        body: 'Choose Dark, Light, or System in Settings → Appearance. "System" follows your device appearance setting automatically.',
       },
       {
         title: 'Analytics',
@@ -326,12 +331,16 @@ export default function GuidePage() {
         <div className="text-5xl mb-4">🗑️</div>
         <h2 className="text-3xl font-bold mb-2">Ready to start deleting?</h2>
         <p className="text-text-secondary mb-6">Free download. No account. No compromise.</p>
-        <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
-          Coming Soon to the App Store
-        </span>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
+            <AppleIcon className="w-5 h-5" />
+            Coming Soon to iOS
+          </span>
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
+            <AndroidIcon className="w-5 h-5" />
+            Coming Soon to Android
+          </span>
+        </div>
         <div className="mt-4 flex justify-center gap-4">
           <Link href="/help" className="text-text-secondary hover:text-white text-sm transition-colors">
             Help & FAQ →

@@ -2,14 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
-import { WifiOffIcon, LockIcon, ClockIcon } from '@/components/Icons'
+import { WifiOffIcon, LockIcon, ClockIcon, AppleIcon, AndroidIcon } from '@/components/Icons'
 
 const trustPillars = [
   {
     Icon: WifiOffIcon,
     color: 'text-accent bg-accent/10',
     title: 'No cloud. Ever.',
-    desc: 'Your notes and photos never leave your device. There is no server, no sync, no backup. What you store stays on your iPhone — period.',
+    desc: 'Your notes and photos never leave your device. There is no server, no sync, no backup. What you store stays on your phone — period.',
   },
   {
     Icon: LockIcon,
@@ -72,24 +72,31 @@ export default function Home() {
             <div className="flex-1 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-sm text-text-secondary mb-6">
                 <span className="w-2 h-2 rounded-full bg-yellow-400 inline-block" />
-                Coming soon to the App Store
+                Coming soon to iOS &amp; Android
               </div>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-none mb-4">
                 auto-delete.<br />
                 <span className="text-gradient">stay clean.</span>
               </h1>
               <p className="text-text-secondary text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-                A privacy-first iOS vault for notes and photos that delete themselves.
+                A privacy-first vault for notes and photos that delete themselves.
                 Stored only on your device. Encrypted so nothing else can read it.
                 Gone when you say so.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                 <span className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
-                  Coming Soon
+                  <AppleIcon className="w-5 h-5" />
+                  Coming Soon to iOS
                 </span>
+                <span className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-6 py-3.5 rounded-2xl cursor-not-allowed select-none">
+                  <AndroidIcon className="w-5 h-5" />
+                  Coming Soon to Android
+                </span>
+              </div>
+              <div className="mt-4 flex justify-center lg:justify-start">
                 <Link
                   href="/features"
-                  className="inline-flex items-center justify-center gap-2 bg-card hover:bg-[#2C2C2C] border border-border text-white font-semibold px-6 py-3.5 rounded-2xl transition-colors"
+                  className="inline-flex items-center justify-center gap-2 text-accent hover:text-accent-hover font-medium transition-colors"
                 >
                   See all features →
                 </Link>
@@ -167,7 +174,7 @@ export default function Home() {
               <p className="text-text-secondary leading-relaxed mb-4">
                 Deletable has no cloud, no account, and no server that stores your content.
                 Everything is encrypted with AES-256 and locked inside your device.
-                Other apps can&apos;t access it. iOS can&apos;t read it. We can&apos;t see it.
+                Other apps can&apos;t access it. Your OS can&apos;t read it. We can&apos;t see it.
                 The only person who can open your vault is you — with your face.
               </p>
               <Link href="/features" className="text-accent hover:text-accent-hover font-medium text-sm transition-colors">
@@ -220,9 +227,16 @@ export default function Home() {
           <p className="text-text-secondary text-lg mb-8">
             Free download. No account. No cloud. Nothing stored anywhere but your pocket.
           </p>
-          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-8 py-4 rounded-2xl cursor-not-allowed select-none text-lg">
-            Coming Soon
-          </span>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-8 py-4 rounded-2xl cursor-not-allowed select-none text-lg">
+              <AppleIcon className="w-6 h-6" />
+              Coming Soon to iOS
+            </span>
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 font-semibold px-8 py-4 rounded-2xl cursor-not-allowed select-none text-lg">
+              <AndroidIcon className="w-6 h-6" />
+              Coming Soon to Android
+            </span>
+          </div>
         </div>
       </section>
     </>

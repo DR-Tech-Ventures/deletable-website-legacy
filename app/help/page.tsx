@@ -4,7 +4,7 @@ import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Help — Deletable',
-  description: 'Frequently asked questions and support for the Deletable iOS app.',
+  description: 'Frequently asked questions and support for Deletable on iOS and Android.',
 }
 
 const faqs = [
@@ -24,8 +24,8 @@ const faqs = [
         a: 'Yes. Open the item and tap the timer badge at the top of the card to edit the expiry time.',
       },
       {
-        q: 'How do I set up Face ID or a passcode lock?',
-        a: 'Go to Settings → Security → Lock App and toggle it on. By default Deletable uses Face ID (or Touch ID on supported devices). To use a 4-digit PIN instead, tap Lock Method and select Passcode. Both options lock the app on the same screen.',
+        q: 'How do I set up biometric unlock or a passcode lock?',
+        a: 'Go to Settings → Security → Lock App and toggle it on. Deletable uses Face ID or Touch ID on iOS and fingerprint on Android by default. To use a 4-digit PIN instead, tap Lock Method and select Passcode. Both options lock the app on the same screen.',
       },
     ],
   },
@@ -38,7 +38,7 @@ const faqs = [
       },
       {
         q: 'What happens if the app isn\'t open when an item expires?',
-        a: 'Deletable registers an iOS background fetch task that runs periodically (minimum every 15 minutes, per iOS policy) to purge expired items. Your items will be deleted even when the app is closed.',
+        a: 'Deletable registers a background fetch task that runs periodically (about every 15 minutes on both iOS and Android, subject to OS scheduling) to purge expired items. Your items will be deleted even when the app is closed.',
       },
       {
         q: 'Will I get a warning before something is deleted?',
@@ -51,7 +51,7 @@ const faqs = [
     questions: [
       {
         q: 'Is my data really encrypted?',
-        a: 'Yes. Every note and photo is encrypted with AES-256 before being written to the local SQLite database. Your master encryption key is stored in the iOS Keychain and never leaves your device.',
+        a: 'Yes. Every note and photo is encrypted with AES-256 before being written to the local SQLite database. Your master encryption key is stored in the iOS Keychain on iOS, or the Android Keystore on Android, and never leaves your device.',
       },
       {
         q: 'Does Deletable sync to the cloud?',
@@ -59,11 +59,11 @@ const faqs = [
       },
       {
         q: 'What data does Deletable collect?',
-        a: 'We collect fully anonymous stats: total items deleted, bytes freed, current tier, and vault sizes. These are linked to a random device UUID generated at first launch — not your name, Apple ID, or any identifying information. See our Privacy Policy for full details.',
+        a: 'We collect fully anonymous stats: total items deleted, bytes freed, current tier, and vault sizes. These are linked to a random device UUID generated at first launch — not your name, Apple ID, Google account, or any identifying information. See our Privacy Policy for full details.',
       },
       {
         q: 'Does Deletable hide my content in the app switcher?',
-        a: 'Yes. When you switch apps, Deletable shows a privacy overlay with just the app logo instead of your vault contents. Expiry notifications are also redacted — the alert reads "A note or photo deletes in X" rather than showing your item title on the lock screen.',
+        a: 'Yes. iOS shows a privacy overlay with just the app logo instead of your vault contents while the app is backgrounded. On Android, Deletable sets FLAG_SECURE so the OS blanks the preview in the recents view and also blocks system screenshots while the app is open. Expiry notifications are redacted on both platforms — the alert reads "A note or photo deletes in X" rather than showing your item title on the lock screen.',
       },
       {
         q: 'What happens to my data if I delete the app?',
@@ -100,7 +100,7 @@ const faqs = [
       },
       {
         q: 'Can I add a note or photo directly from my home screen?',
-        a: 'Yes. Long-press the Deletable app icon on your home screen and tap Add Note or Add Photo. The shortcut launches the app directly into the new-item flow without opening the full vault first.',
+        a: 'On iOS, long-press the Deletable app icon on your home screen and tap Add Note or Add Photo — the shortcut launches the app directly into the new-item flow. On Android, add the Deletable widget to your home screen for a live countdown to your soonest-to-expire item; tap the widget to open the app.',
       },
     ],
   },
@@ -109,14 +109,14 @@ const faqs = [
     questions: [
       {
         q: 'Items aren\'t being deleted in the background.',
-        a: 'iOS can delay or throttle background tasks based on battery level and usage patterns. Make sure Background App Refresh is enabled for Deletable in iOS Settings → General → Background App Refresh. Opening the app occasionally helps iOS learn to run the background task more reliably.',
+        a: "Both iOS and Android can delay or throttle background tasks based on battery level and usage patterns. On iOS, make sure Background App Refresh is enabled for Deletable in Settings → General → Background App Refresh. On Android, exclude Deletable from battery optimization in Settings → Apps → Deletable → Battery → Unrestricted (the exact path varies by device). Opening the app occasionally helps the OS learn to run the background task more reliably.",
       },
       {
         q: 'I\'m not receiving expiry notifications.',
-        a: 'Check that notifications are enabled for Deletable in iOS Settings → Notifications. Also verify that Expiry Reminders is toggled on in Deletable → Settings → Notifications.',
+        a: 'Check that notifications are enabled for Deletable in your device Settings → Notifications (or Apps → Deletable → Notifications on Android). Also verify that Expiry Reminders is toggled on in Deletable → Settings → Notifications.',
       },
       {
-        q: 'The app asks for Face ID every time I open it.',
+        q: 'The app asks for biometric unlock every time I open it.',
         a: 'This is expected if Lock App is enabled and Lock After is set to "Immediately." Change the Lock After setting in Settings → Security → Lock After to give yourself a grace period.',
       },
       {
