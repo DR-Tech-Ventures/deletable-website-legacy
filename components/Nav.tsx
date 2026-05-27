@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NavLinks from './NavLinks'
 import NavMobileMenu from './NavMobileMenu'
+import { AppleIcon, AndroidIcon } from './Icons'
 
 export default function Nav() {
   return (
@@ -14,7 +15,12 @@ export default function Nav() {
 
         <NavLinks />
 
-        <span className="hidden md:inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 text-sm font-semibold px-4 py-2 rounded-xl cursor-not-allowed select-none">
+        <span
+          className="hidden md:inline-flex items-center gap-2 bg-white/10 border border-white/10 text-white/60 text-sm font-semibold px-4 py-2 rounded-xl cursor-not-allowed select-none"
+          title="Coming soon to iOS and Android"
+        >
+          <AppleIcon className="w-4 h-4" />
+          <AndroidIcon className="w-4 h-4" />
           Coming Soon
         </span>
 

@@ -7,10 +7,10 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'Deletable — auto-delete. stay clean.',
-  description: 'A privacy-first iOS app for secure, time-limited storage. Everything you save deletes itself.',
+  description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
   openGraph: {
     title: 'Deletable — auto-delete. stay clean.',
-    description: 'A privacy-first iOS app for secure, time-limited storage. Everything you save deletes itself.',
+    description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
     type: 'website',
   },
 }

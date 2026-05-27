@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { AppleIcon, AndroidIcon } from './Icons'
 
 const links = [
   { href: '/features', label: 'Features' },
@@ -89,10 +90,15 @@ export default function NavMobileMenu() {
                   {label}
                 </Link>
               ))}
-              <div
-                className="mt-3 flex items-center justify-center gap-2 bg-white/20 text-white/60 text-sm font-semibold px-4 py-3 rounded-xl cursor-not-allowed"
-              >
-                Coming Soon
+              <div className="mt-3 flex flex-col gap-2">
+                <div className="flex items-center justify-center gap-2 bg-white/20 text-white/60 text-sm font-semibold px-4 py-3 rounded-xl cursor-not-allowed">
+                  <AppleIcon className="w-4 h-4" />
+                  Coming Soon to iOS
+                </div>
+                <div className="flex items-center justify-center gap-2 bg-white/20 text-white/60 text-sm font-semibold px-4 py-3 rounded-xl cursor-not-allowed">
+                  <AndroidIcon className="w-4 h-4" />
+                  Coming Soon to Android
+                </div>
               </div>
             </nav>
           </div>

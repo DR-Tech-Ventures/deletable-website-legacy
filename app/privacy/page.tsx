@@ -16,7 +16,7 @@ const permissions: { Icon: IconComponent; color: string; name: string; reason: s
   { Icon: CameraIcon, color: 'text-blue bg-blue/10', name: 'Camera', reason: 'To capture photos you choose to store in the vault.' },
   { Icon: PhotoIcon, color: 'text-blue bg-blue/10', name: 'Photo Library', reason: 'To import photos from your library into the vault.' },
   { Icon: MapPinIcon, color: 'text-purple bg-purple/10', name: 'Location (In-Use & Background)', reason: 'To attach geofence reminders to notes. Only used when you explicitly enable Location Context in Settings.' },
-  { Icon: UserIcon, color: 'text-accent bg-accent/10', name: 'Face ID / Biometrics', reason: 'To lock the app and require authentication on open.' },
+  { Icon: UserIcon, color: 'text-accent bg-accent/10', name: 'Face ID / Touch ID / Fingerprint', reason: 'To lock the app and require biometric authentication on open — Face ID or Touch ID on iOS, fingerprint on Android.' },
   { Icon: BellIcon, color: 'text-orange bg-orange/10', name: 'Notifications', reason: 'To send optional expiry reminder alerts before items are deleted.' },
   { Icon: RefreshIcon, color: 'text-orange bg-orange/10', name: 'Background App Refresh', reason: 'To purge expired items even when the app is not open.' },
 ]
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold">The short version</h2>
           </div>
           <p className="text-text-secondary leading-relaxed">
-            Your vault content — notes, photos, everything you store — <strong className="text-white">never leaves your device</strong>. It is encrypted with AES-256 and the key is sealed in your iOS Keychain. We collect only anonymous, aggregated usage statistics tied to a random ID that cannot be traced back to you.
+            Your vault content — notes, photos, everything you store — <strong className="text-white">never leaves your device</strong>. It is encrypted with AES-256 and the key is sealed in the iOS Keychain or Android Keystore. We collect only anonymous, aggregated usage statistics tied to a random ID that cannot be traced back to you.
           </p>
         </section>
 
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
           <P>The following data is stored <strong className="text-white">exclusively on your device</strong> and is never transmitted to our servers or any third party:</P>
           <ul className="text-text-secondary space-y-2 list-disc list-inside text-sm leading-relaxed">
             <li>All vault content: notes, photos, and any text you type</li>
-            <li>Your encryption master key (stored in the iOS Keychain)</li>
+            <li>Your encryption master key (stored in the iOS Keychain on iOS, or the Android Keystore on Android)</li>
             <li>Your categories, settings, and preferences</li>
             <li>Location data associated with notes</li>
             <li>Biometric authentication configuration</li>
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="3. What anonymous data we collect">
-          <P>When the app is initialized and when vault activity occurs, Deletable syncs the following statistics to our Supabase backend. This data is linked to a <strong className="text-white">randomly generated UUID</strong> created at first launch — it has no connection to your Apple ID, name, email, or device serial number.</P>
+          <P>When the app is initialized and when vault activity occurs, Deletable syncs the following statistics to our Supabase backend. This data is linked to a <strong className="text-white">randomly generated UUID</strong> created at first launch — it has no connection to your Apple ID, Google account, name, email, or device serial number.</P>
           <div className="bg-background rounded-xl p-4 mt-3 text-sm font-mono space-y-3 text-text-secondary">
             <div className="space-y-1">
               <div className="text-xs uppercase tracking-wider text-text-secondary opacity-50 font-sans mb-1">Device</div>
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="9. Contact">
-          <P>Questions about this privacy policy? Reach out via the App Store listing or the <a href="/help" className="text-accent hover:text-accent-hover transition-colors">Help page</a>.</P>
+          <P>Questions about this privacy policy? Reach out via the App Store / Google Play listing or the <a href="/help" className="text-accent hover:text-accent-hover transition-colors">Help page</a>.</P>
         </Section>
 
       </div>
