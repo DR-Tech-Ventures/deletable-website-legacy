@@ -1,7 +1,10 @@
 'use server'
 
+import * as Sentry from '@sentry/nextjs'
+import { headers } from 'next/headers'
 import { Resend } from 'resend'
 import { getClient } from '@/lib/supabase'
+import { checkRateLimit } from '@/lib/ratelimit'
 
 type ContactState = { success: true } | { success: false; error: string } | null
 
@@ -22,6 +25,14 @@ export async function submitContact(
     return { success: false, error: 'Name, email, and message are required.' }
   }
 
+  // Rate limiting: 3 submissions per IP per hour
+  const headersList = await headers()
+  const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  const allowed = await checkRateLimit(ip)
+  if (!allowed) {
+    return { success: false, error: 'Too many requests. Please try again later.' }
+  }
+
   const client = getClient()
   if (!client) return { success: false, error: 'Service unavailable. Please try again later.' }
 
@@ -33,7 +44,7 @@ export async function submitContact(
   })
 
   if (dbError) {
-    console.error('Contact submission error:', dbError)
+    Sentry.captureException(dbError, { extra: { context: 'contact_submission_db' } })
     return { success: false, error: 'Something went wrong. Please try again.' }
   }
 
@@ -47,7 +58,7 @@ export async function submitContact(
   })
 
   if (emailError) {
-    console.error('Resend error:', emailError)
+    Sentry.captureException(new Error(`Resend delivery failure: ${emailError.message}`))
   }
 
   return { success: true }
