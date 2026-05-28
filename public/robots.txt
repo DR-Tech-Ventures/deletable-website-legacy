@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /beta/
+
+Sitemap: https://deletable.app/sitemap.xml

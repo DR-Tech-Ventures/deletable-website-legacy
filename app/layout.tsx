@@ -5,13 +5,54 @@ import Footer from '@/components/Footer'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
+const siteUrl = 'https://deletable.app'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Deletable — auto-delete. stay clean.',
   description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
   openGraph: {
     title: 'Deletable — auto-delete. stay clean.',
     description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
     type: 'website',
+    url: siteUrl,
+    locale: 'en_US',
+    siteName: 'Deletable',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Deletable — auto-delete. stay clean.',
+    description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'DR Tech Ventures LLC',
+  url: siteUrl,
+  logo: `${siteUrl}/icon.png`,
+}
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Deletable',
+  operatingSystem: 'iOS, Android',
+  applicationCategory: 'UtilitiesApplication',
+  description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  author: {
+    '@type': 'Organization',
+    name: 'DR Tech Ventures LLC',
+    url: siteUrl,
   },
 }
 
@@ -34,6 +75,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-hidden">{children}</main>
         <Footer />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }} />
         <Analytics />
         <SpeedInsights />
       </body>
