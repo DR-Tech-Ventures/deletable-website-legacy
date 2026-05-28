@@ -127,9 +127,25 @@ const faqs = [
   },
 ]
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.flatMap((section) =>
+    section.questions.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    }))
+  ),
+}
+
 export default function HelpPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold mb-4">Help & FAQ</h1>
         <p className="text-text-secondary text-xl max-w-xl mx-auto">
