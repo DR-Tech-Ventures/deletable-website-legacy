@@ -8,7 +8,7 @@ export default defineConfig({
   checks: {
     activated: true,
     muted: false,
-    runtimeId: '2024.09',
+    runtimeId: '2025.04',
     frequency: Frequency.EVERY_10M,
     locations: ['us-east-1', 'eu-west-1'],
     tags: ['website'],
