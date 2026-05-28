@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useEffect, useRef } from 'react'
+import { track } from '@vercel/analytics'
 import { submitContact } from '@/app/contact/actions'
 
 export default function ContactForm() {
@@ -8,7 +9,10 @@ export default function ContactForm() {
   const successRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
-    if (state?.success) successRef.current?.focus()
+    if (state?.success) {
+      track('contact_form_submitted')
+      successRef.current?.focus()
+    }
   }, [state?.success])
 
   if (state?.success) {
