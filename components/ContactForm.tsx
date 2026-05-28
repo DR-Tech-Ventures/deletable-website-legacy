@@ -27,6 +27,8 @@ export default function ContactForm() {
 
   return (
     <form action={action} className="space-y-5">
+      {/* Honeypot: hidden from real users, bots fill it in */}
+      <input type="text" name="website" tabIndex={-1} aria-hidden="true" className="hidden" />
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
           <label className="block text-sm font-medium text-white mb-2" htmlFor="contact-name">
