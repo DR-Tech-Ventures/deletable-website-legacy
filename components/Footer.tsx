@@ -17,7 +17,17 @@ export default function Footer() {
           <Link href="/help" className="py-2 hover:text-white transition-colors">Help</Link>
           <Link href="/privacy" className="py-2 hover:text-white transition-colors">Privacy</Link>
         </nav>
-        <p className="text-text-tertiary text-sm">© {new Date().getFullYear()} DR Tech Ventures LLC</p>
+        <p className="text-text-tertiary text-sm">
+          © {new Date().getFullYear()}{" "}
+          <Link
+            href="https://drtechventures.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            DR Tech Ventures LLC
+          </Link>
+        </p>
       </div>
     </footer>
   )
