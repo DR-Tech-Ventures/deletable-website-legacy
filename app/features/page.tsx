@@ -11,6 +11,7 @@ import {
 export const metadata: Metadata = {
   title: 'Features — Deletable',
   description: 'Everything Deletable can do: encrypted vault, auto-delete, biometric unlock, location reminders, Dynamic Island on iOS, home-screen widget on Android, and more.',
+  alternates: { canonical: 'https://deletable.app/features' },
 }
 
 type IconComponent = React.ComponentType<{ className?: string }>

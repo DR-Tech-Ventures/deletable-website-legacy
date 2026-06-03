@@ -5,6 +5,7 @@ import ContactForm from '@/components/ContactForm'
 export const metadata: Metadata = {
   title: 'Help — Deletable',
   description: 'Frequently asked questions and support for Deletable on iOS and Android.',
+  alternates: { canonical: 'https://deletable.app/help' },
 }
 
 const faqs = [

@@ -9,6 +9,7 @@ import {
 export const metadata: Metadata = {
   title: 'User Guide — Deletable',
   description: 'A complete guide to using Deletable — creating notes and photos, setting timers, organizing with folders, and more.',
+  alternates: { canonical: 'https://deletable.app/guide' },
 }
 
 type IconComponent = React.ComponentType<{ className?: string }>

@@ -7,6 +7,7 @@ import { TierIcon } from '@/components/TierIcon'
 export const metadata: Metadata = {
   title: 'Trash Stats — Deletable',
   description: 'See all 8 achievement tiers and the global anonymous leaderboard of top deleters.',
+  alternates: { canonical: 'https://deletable.app/trash-stats' },
 }
 
 export const revalidate = 300 // refresh leaderboard every 5 min

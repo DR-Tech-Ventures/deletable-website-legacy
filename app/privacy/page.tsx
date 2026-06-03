@@ -6,6 +6,7 @@ export const dynamic = 'force-static'
 export const metadata: Metadata = {
   title: 'Privacy Policy — Deletable',
   description: 'How Deletable handles your data — and why almost none of it ever leaves your device.',
+  alternates: { canonical: 'https://deletable.app/privacy' },
 }
 
 type IconComponent = React.ComponentType<{ className?: string }>

@@ -14,67 +14,102 @@ export default function Image() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'center',
-          padding: '60px',
+          padding: '80px 96px',
           fontFamily: 'system-ui, -apple-system, sans-serif',
+          position: 'relative',
         }}
       >
+        {/* Top accent line */}
         <div
           style={{
-            fontSize: 96,
-            fontWeight: 800,
-            color: 'white',
-            letterSpacing: '-4px',
-            lineHeight: 1,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '4px',
+            background: '#00c2a8',
+            display: 'flex',
           }}
-        >
-          Deletable
-        </div>
+        />
+
+        {/* Radial glow */}
         <div
           style={{
-            fontSize: 40,
-            color: '#9CA3AF',
-            marginTop: 20,
-            letterSpacing: '-1px',
+            position: 'absolute',
+            top: '-150px',
+            left: '-150px',
+            width: '700px',
+            height: '700px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(0,194,168,0.10) 0%, transparent 65%)',
+            display: 'flex',
+          }}
+        />
+
+        {/* Logo row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '36px' }}>
+          <div
+            style={{
+              width: '52px',
+              height: '52px',
+              borderRadius: '14px',
+              background: 'rgba(0,194,168,0.15)',
+              border: '1px solid rgba(0,194,168,0.30)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '26px',
+            }}
+          >
+            🗑️
+          </div>
+          <span style={{ color: '#606060', fontSize: '22px', letterSpacing: '0.06em' }}>
+            deletable.app
+          </span>
+        </div>
+
+        {/* Headline */}
+        <div
+          style={{
+            fontSize: '82px',
+            fontWeight: 700,
+            color: '#ffffff',
+            lineHeight: 1.05,
+            letterSpacing: '-0.03em',
+            marginBottom: '28px',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
-          auto-delete. stay clean.
+          <span>auto-delete.</span>
+          <span style={{ color: '#00c2a8' }}>stay clean.</span>
         </div>
-        <div style={{ display: 'flex', gap: 16, marginTop: 48 }}>
-          {[
-            { icon: '📵', label: 'No cloud' },
-            { icon: '🔒', label: 'AES-256 encrypted' },
-            { icon: '⏱', label: 'Auto-deletes' },
-          ].map(({ icon, label }) => (
+
+        {/* Subtext */}
+        <div style={{ fontSize: '26px', color: '#a0a0a0', lineHeight: 1.4, maxWidth: '680px', display: 'flex' }}>
+          A privacy-first vault for notes and photos that delete themselves.
+        </div>
+
+        {/* Feature pills */}
+        <div style={{ display: 'flex', gap: '12px', marginTop: '52px' }}>
+          {['No cloud. Ever.', 'AES-256 encrypted', 'Auto-expires'].map((label) => (
             <div
               key={label}
               style={{
-                background: '#161616',
-                border: '1px solid #2C2C2C',
-                borderRadius: 14,
-                padding: '12px 28px',
-                fontSize: 26,
-                color: '#9CA3AF',
+                background: '#1c1c1c',
+                border: '1px solid #2c2c2c',
+                borderRadius: '999px',
+                padding: '10px 22px',
+                color: '#ffffff',
+                fontSize: '20px',
                 display: 'flex',
-                alignItems: 'center',
-                gap: 10,
               }}
             >
-              <span>{icon}</span>
-              <span>{label}</span>
+              {label}
             </div>
           ))}
-        </div>
-        <div
-          style={{
-            fontSize: 26,
-            color: '#444',
-            marginTop: 52,
-            letterSpacing: '0.5px',
-          }}
-        >
-          deletable.app
         </div>
       </div>
     ),

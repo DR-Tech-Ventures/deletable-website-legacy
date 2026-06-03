@@ -1,5 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://deletable.app' },
+}
 import { StatsMockup } from '@/components/PhoneMockup'
 import { TIERS } from '@/lib/tiers'
 import { WifiOffIcon, LockIcon, ClockIcon, AppleIcon, AndroidIcon } from '@/components/Icons'

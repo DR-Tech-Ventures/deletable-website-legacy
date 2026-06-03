@@ -24,9 +24,6 @@ export const metadata: Metadata = {
     title: 'Deletable — auto-delete. stay clean.',
     description: 'A privacy-first app for iPhone and Android — secure, time-limited storage. Everything you save deletes itself.',
   },
-  alternates: {
-    canonical: siteUrl,
-  },
 }
 
 const organizationSchema = {
